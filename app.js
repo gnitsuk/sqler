@@ -5,7 +5,7 @@ var Socketeer = require('./Socketeer');
 
 const app = express();
 var port = process.env.PORT || 3000;
-app.get('/', (req, res) => res.send('Hello Manny'));
+app.get('/', (req, res) => res.send('Hello Mandy'));
 var m_server = app.listen(port, () => console.log('Server is running on port ' + port));
 
 var m_webSocketServer = new WebSocketServer( { server: m_server, autoAcceptConnections: true} );
