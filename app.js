@@ -1,7 +1,7 @@
+var WebSocketServer = require('ws').Server;
 var url = require('url');
 var path = require('path');
 const express = require('express');
-var Socketeer = require('./Socketeer');
 
 const app = express();
 var port = process.env.PORT || 3000;
