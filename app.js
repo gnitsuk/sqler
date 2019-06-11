@@ -11,6 +11,6 @@ var m_webSocketServer = new WebSocketServer( { server: m_server, autoAcceptConne
 
 m_webSocketServer.on('connection', function (ws)
                                             {
-                                                ws.send("Server connection accepted. Client ID = ALEPH NULL");
+                                                ws.send("Server connection accepted. Client ID = ALEPH NULL2");
                                             }
 );
