@@ -1,4 +1,3 @@
-var WebSocketServer = require('ws').Server;
 var url = require('url');
 var path = require('path');
 const express = require('express');
@@ -13,6 +12,6 @@ var m_webSocketServer = new WebSocketServer( { server: m_server, autoAcceptConne
 
 m_webSocketServer.on('connection', function (ws)
                                             {
-                                                ws.send("Server connection accepted. Client ID = ALEPH NULL3");
+                                                ws.send("Server connection accepted. Client ID = ALEPH NULL 4");
                                             }
 );
