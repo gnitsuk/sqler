@@ -1,4 +1,4 @@
-//var WebSocketServer = require('ws').Server;
+var WebSocketServer = require('ws').Server;
 var ASCII_MESSAGE = { "ENUMERATE_CLIENTS": 0, "HELP": 1, "ID": 2, "IDENTIFY": 3 };
 
 function Socketeer(server, nKeepAliveCheckInterval)
