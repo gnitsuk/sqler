@@ -1,4 +1,4 @@
-//var WebSocketServer = require('ws').Server;
+var WebSocketServer = require('ws').Server;
 var url = require('url');
 var path = require('path');
 const express = require('express');
@@ -10,7 +10,7 @@ var port = process.env.PORT || 3000;
 app.get('/', (req, res) => res.send('Hello Orson'));
 var m_server = app.listen(port, () => console.log('Server is running on port ' + port));
 
-//var m_webSocketServer = new WebSocketServer( { server: m_server, autoAcceptConnections: true} );
+var m_webSocketServer = new WebSocketServer( { server: m_server, autoAcceptConnections: true} );
 
 var groupDrawer = new GroupDrawer();
 
@@ -22,10 +22,10 @@ socketeer.AddAdditionalHelpStringsCallback(groupDrawer.GetHelpStrings, groupDraw
 socketeer.AddNewClientConnectCallback(groupDrawer.HandleNewClientConnect, groupDrawer);
 socketeer.AddClientDisconnectCallback(groupDrawer.HandleClientDisconnect, groupDrawer);
 
-socketeer.StartServer();
+//socketeer.StartServer();
 
-//m_webSocketServer.on('connection', function (ws)
-//                                            {
-//                                                ws.send("Server connection accepted. Client ID = BADDDER " +  "ll");
-//                                            }
+m_webSocketServer.on('connection', function (ws)
+                                            {
+                                                ws.send("Server connection accepted. Client ID = BADDDER " +  "44");
+                                            }
 );
