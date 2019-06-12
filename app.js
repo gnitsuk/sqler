@@ -3,7 +3,7 @@ var url = require('url');
 var path = require('path');
 const express = require('express');
 var Socketeer = require('./Socketeer');
-
+var g = 87;
 const app = express();
 var port = process.env.PORT || 3000;
 app.get('/', (req, res) => res.send('Hello Statham'));
@@ -13,6 +13,6 @@ var m_webSocketServer = new WebSocketServer( { server: m_server, autoAcceptConne
 
 m_webSocketServer.on('connection', function (ws)
                                             {
-                                                ws.send("Server connection accepted. Client ID = ALEPH NULL " +  t.toString());
+                                                ws.send("Server connection accepted. Client ID = ALEPH NULL " +  g.toString());
                                             }
 );
