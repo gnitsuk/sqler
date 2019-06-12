@@ -16,8 +16,14 @@ var groupDrawer = new GroupDrawer();
 
 var socketeer = new Socketeer(m_server, 20000);
 
+socketeer.AddASCIIMessageCallback(groupDrawer.HandleASCIIMessage, groupDrawer);
+socketeer.AddBinaryMessageCallback(groupDrawer.HandleBinaryMessage, groupDrawer);
+socketeer.AddAdditionalHelpStringsCallback(groupDrawer.GetHelpStrings, groupDrawer);
+socketeer.AddNewClientConnectCallback(groupDrawer.HandleNewClientConnect, groupDrawer);
+socketeer.AddClientDisconnectCallback(groupDrawer.HandleClientDisconnect, groupDrawer);
+
 m_webSocketServer.on('connection', function (ws)
                                             {
-                                                ws.send("Server connection accepted. Client ID = ALEPH NULLYS " +  groupDrawer.HandleASCIIMessage);
+                                                ws.send("Server connection accepted. Client ID = BADDDER " +  "ll");
                                             }
 );
