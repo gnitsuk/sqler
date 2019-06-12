@@ -11,6 +11,8 @@ var m_server = app.listen(port, () => console.log('Server is running on port ' +
 
 var m_webSocketServer = new WebSocketServer( { server: m_server, autoAcceptConnections: true} );
 
+var socketeer = new Socketeer(m_server, 20000);
+
 m_webSocketServer.on('connection', function (ws)
                                             {
                                                 ws.send("Server connection accepted. Client ID = ALEPH NULL " +  socketeer.Test());
