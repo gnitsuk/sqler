@@ -26,6 +26,6 @@ socketeer.AddClientDisconnectCallback(groupDrawer.HandleClientDisconnect, groupD
 
 m_webSocketServer.on('connection', function (ws)
                                             {
-                                                ws.send("Server connection accepted. Client ID = TBB " +  WebSocketServer.toString());
+                                                ws.send("Server connection accepted. Client ID = TBB " +  "BOB");
                                             }
 );
