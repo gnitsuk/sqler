@@ -1,4 +1,3 @@
-var t = 8;
 //var WebSocketServer = require('ws').Server;
 var ASCII_MESSAGE = { "ENUMERATE_CLIENTS": 0, "HELP": 1, "ID": 2, "IDENTIFY": 3 };
 
@@ -251,6 +250,11 @@ Socketeer.prototype.IDClient = function (ws, bBinary)
     {
         ws.send(ws.m_nUniqueID.toString(), { binary: false });
     }
+}
+
+Socketeer.prototype.Test = function ()
+{
+    return 16;
 }
 
 module.exports = Socketeer;
