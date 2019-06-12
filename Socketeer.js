@@ -254,7 +254,7 @@ Socketeer.prototype.IDClient = function (ws, bBinary)
 
 Socketeer.prototype.Test = function ()
 {
-    return 16;
+    return 17;
 }
 
 module.exports = Socketeer;
