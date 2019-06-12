@@ -23,7 +23,7 @@ function Socketeer(server, wss, nKeepAliveCheckInterval)
 
 Socketeer.prototype.StartServer = function()
 {
-    this.m_webSocketServer = new WebSocketServer( { server: this.m_server, autoAcceptConnections: true} );
+    //this.m_webSocketServer = new WebSocketServer( { server: this.m_server, autoAcceptConnections: true} );
 
     this.m_webSocketServer.m_socketeer = this;
 
