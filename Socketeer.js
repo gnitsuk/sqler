@@ -254,7 +254,7 @@ Socketeer.prototype.IDClient = function (ws, bBinary)
 
 Socketeer.prototype.Test = function ()
 {
-    return 17;
+    return this.m_nNextUniqueClientID;
 }
 
 module.exports = Socketeer;
