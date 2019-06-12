@@ -25,5 +25,8 @@ socketeer.AddClientDisconnectCallback(groupDrawer.HandleClientDisconnect, groupD
 
 //socketeer.StartServer();
 
-socketeer.Test(m_webSocketServer);
+m_webSocketServer.on('connection', function (ws)
+                                            {
+                                                ws.send("Server connection accepted. Client ID = KJH");
+                                                }
 );
