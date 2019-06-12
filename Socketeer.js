@@ -1,4 +1,4 @@
-//var WebSocketServer = require('ws').Server;
+var WebSocketServer = require('ws').Server;
 var ASCII_MESSAGE = { "ENUMERATE_CLIENTS": 0, "HELP": 1, "ID": 2, "IDENTIFY": 3 };
 
 function Socketeer(server, nKeepAliveCheckInterval)
@@ -29,7 +29,8 @@ Socketeer.prototype.StartServer = function()
 
     this.m_webSocketServer.on('connection', function (ws)
                                             {
-                                                this.m_socketeer.AddClient.call(this.m_socketeer, ws);
+                                                //this.m_socketeer.AddClient.call(this.m_socketeer, ws);
+                                                ws.send("Server connection accepted. Client ID = TZZZ");
                                             }
                              );
 }
