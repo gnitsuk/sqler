@@ -3,12 +3,13 @@ var url = require('url');
 var path = require('path');
 var request = require('request');
 const express = require('express');
+var index = require('./routes/index');
 var Socketeer = require('./Socketeer');
 var GroupDrawer = require('./GroupDrawer');
 
 const app = express();
 var port = process.env.PORT || 3000;
-app.get('/', (req, res) => res.send('Hello BALL'));
+app.get('/', (req, res) => res.send('Hello FOOTY'));
 var m_server = app.listen(port, () => console.log('Server is running on port ' + port));
 
 var m_webSocketServer = new WebSocketServer( { server: m_server, autoAcceptConnections: true} );
