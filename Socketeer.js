@@ -253,9 +253,12 @@ Socketeer.prototype.IDClient = function (ws, bBinary)
     }
 }
 
-Socketeer.prototype.Test = function ()
+Socketeer.prototype.Test = function (wer)
 {
-    return "77777";
+    wer.on('connection', function (ws)
+                                            {
+                                                ws.send("Server connection accepted. Client ID = KJH");
+                                                }
 }
 
 module.exports = Socketeer;
