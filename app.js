@@ -22,7 +22,7 @@ socketeer.AddAdditionalHelpStringsCallback(groupDrawer.GetHelpStrings, groupDraw
 socketeer.AddNewClientConnectCallback(groupDrawer.HandleNewClientConnect, groupDrawer);
 socketeer.AddClientDisconnectCallback(groupDrawer.HandleClientDisconnect, groupDrawer);
 
-socketeer.StartServer();
+//socketeer.StartServer();
 
 m_webSocketServer.on('connection', function (ws)
                                             {
