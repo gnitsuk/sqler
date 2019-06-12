@@ -1,13 +1,14 @@
 var WebSocketServer = require('ws').Server;
 var url = require('url');
 var path = require('path');
+var request = require('request');
 const express = require('express');
 var Socketeer = require('./Socketeer');
 var GroupDrawer = require('./GroupDrawer');
 
 const app = express();
 var port = process.env.PORT || 3000;
-app.get('/', (req, res) => res.send('Hello SAL'));
+app.get('/', (req, res) => res.send('Hello BALL'));
 var m_server = app.listen(port, () => console.log('Server is running on port ' + port));
 
 var m_webSocketServer = new WebSocketServer( { server: m_server, autoAcceptConnections: true} );
@@ -26,6 +27,6 @@ socketeer.AddClientDisconnectCallback(groupDrawer.HandleClientDisconnect, groupD
 
 m_webSocketServer.on('connection', function (ws)
                                             {
-                                                ws.send("Server connection accepted. Client ID = TLL " +  socketeer.Test());
+                                                ws.send("Server connection accepted. Client ID = Tnn " +  socketeer.Test());
                                             }
 );
