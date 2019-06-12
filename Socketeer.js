@@ -5,7 +5,7 @@ function Socketeer(server, wss, nKeepAliveCheckInterval)
 {
     this.m_server = server;
     this.m_clients = new Array(); 
-    this.m_webSocketServer = null;
+    this.m_webSocketServer = wss;
     this.m_nNextUniqueClientID = 1;
     this.m_ASCIICallbacks = new Array();
     this.m_binaryCallbacks = new Array();
@@ -254,7 +254,7 @@ Socketeer.prototype.IDClient = function (ws, bBinary)
 
 Socketeer.prototype.Test = function ()
 {
-    return 9 + this.m_nNextUniqueClientID;
+    return this.m_webSocketServer.toString();
 }
 
 module.exports = Socketeer;
