@@ -1,7 +1,7 @@
 //var WebSocketServer = require('ws').Server;
 var ASCII_MESSAGE = { "ENUMERATE_CLIENTS": 0, "HELP": 1, "ID": 2, "IDENTIFY": 3 };
 
-function Socketeer(server, nKeepAliveCheckInterval)
+function Socketeer(server, wss, nKeepAliveCheckInterval)
 {
     this.m_server = server;
     this.m_clients = new Array(); 
