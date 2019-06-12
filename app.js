@@ -14,7 +14,7 @@ var m_webSocketServer = new WebSocketServer( { server: m_server, autoAcceptConne
 
 var groupDrawer = new GroupDrawer();
 
-var socketeer = new Socketeer(m_server, 20000);
+var socketeer = new Socketeer(m_server, WebSocketServer, 20000);
 
 socketeer.AddASCIIMessageCallback(groupDrawer.HandleASCIIMessage, groupDrawer);
 socketeer.AddBinaryMessageCallback(groupDrawer.HandleBinaryMessage, groupDrawer);
@@ -26,6 +26,6 @@ socketeer.AddClientDisconnectCallback(groupDrawer.HandleClientDisconnect, groupD
 
 m_webSocketServer.on('connection', function (ws)
                                             {
-                                                ws.send("Server connection accepted. Client ID = TET " +  WebSocketServer.toString());
+                                                ws.send("Server connection accepted. Client ID = TAA " +  WebSocketServer.toString());
                                             }
 );
