@@ -7,14 +7,14 @@ var GroupDrawer = require('./GroupDrawer');
 
 const app = express();
 var port = process.env.PORT || 3000;
-app.get('/', (req, res) => res.send('Hello Roger'));
+app.get('/', (req, res) => res.send('Hello Penrose'));
 var m_server = app.listen(port, () => console.log('Server is running on port ' + port));
 
 var m_webSocketServer = new WebSocketServer( { server: m_server, autoAcceptConnections: true} );
 
 var groupDrawer = new GroupDrawer();
 
-var socketeer = new Socketeer(m_server, 20000);
+var socketeer = new Socketeer(m_server, m_webSocketServer, 20000);
 
 socketeer.AddASCIIMessageCallback(groupDrawer.HandleASCIIMessage, groupDrawer);
 socketeer.AddBinaryMessageCallback(groupDrawer.HandleBinaryMessage, groupDrawer);
