@@ -14,7 +14,7 @@ var m_webSocketServer = new WebSocketServer( { server: m_server, autoAcceptConne
 
 var groupDrawer = new GroupDrawer();
 
-var socketeer = new Socketeer(m_server, m_webSocketServer, 20000);
+var socketeer = new Socketeer(m_server, 20000);
 
 socketeer.AddASCIIMessageCallback(groupDrawer.HandleASCIIMessage, groupDrawer);
 socketeer.AddBinaryMessageCallback(groupDrawer.HandleBinaryMessage, groupDrawer);
