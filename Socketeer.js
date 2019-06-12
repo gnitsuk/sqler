@@ -1,11 +1,11 @@
 //var WebSocketServer = require('ws').Server;
 var ASCII_MESSAGE = { "ENUMERATE_CLIENTS": 0, "HELP": 1, "ID": 2, "IDENTIFY": 3 };
 
-function Socketeer(server, nKeepAliveCheckInterval)
+function Socketeer(server, wss, nKeepAliveCheckInterval)
 {
     this.m_server = server;
     this.m_clients = new Array(); 
-    this.m_webSocketServer = null;
+    this.m_webSocketServer = wss;
     this.m_nNextUniqueClientID = 1;
     this.m_ASCIICallbacks = new Array();
     this.m_binaryCallbacks = new Array();
@@ -23,7 +23,7 @@ function Socketeer(server, nKeepAliveCheckInterval)
 
 Socketeer.prototype.StartServer = function()
 {
-    this.m_webSocketServer = new WebSocketServer( { server: this.m_server, autoAcceptConnections: true} );
+    //this.m_webSocketServer = new WebSocketServer( { server: this.m_server, autoAcceptConnections: true} );
 
     this.m_webSocketServer.m_socketeer = this;
 
@@ -254,7 +254,7 @@ Socketeer.prototype.IDClient = function (ws, bBinary)
 
 Socketeer.prototype.Test = function ()
 {
-    return 2*this.m_nNextUniqueClientID;
+    return 2+this.m_nNextUniqueClientID;
 }
 
 module.exports = Socketeer;
