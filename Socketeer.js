@@ -58,11 +58,13 @@ Socketeer.prototype.AddClient = function(ws)
                      {
                          if(flags.binary)
                          {
-                            this.m_socketeer.ProcessBinaryMessage.call(this.m_socketeer, this, message);
+                            //this.m_socketeer.ProcessBinaryMessage.call(this.m_socketeer, this, message);
+                             ws.send("WOW1");
                          }
                          else
                          {
-                            this.m_socketeer.ProcessASCIIMessage.call(this.m_socketeer, this, message);
+                            //this.m_socketeer.ProcessASCIIMessage.call(this.m_socketeer, this, message);
+                             ws.send("WOW2");
                          }     
                      }
          );
@@ -74,7 +76,7 @@ Socketeer.prototype.AddClient = function(ws)
 
     this.m_clients[this.m_clients.length] = { m_ws: ws };
 
-    ws.send("Server connection accepted. Client ID = " + ws.m_nUniqueID.toString())
+    ws.send("Server connection accepted BOY. Client ID = " + ws.m_nUniqueID.toString())
 
     for (var nCallback = 0; nCallback < this.m_newClientConnectCallbacks.length; nCallback++)
     {
