@@ -1,4 +1,3 @@
-//var WebSocketServer = require('ws').Server;
 var url = require('url');
 var path = require('path');
 var request = require('request');
@@ -10,8 +9,6 @@ const app = express();
 var port = process.env.PORT || 3000;
 app.get('/', (req, res) => res.send('Group Drawer HTML Server Responding.'));
 var m_server = app.listen(port, () => console.log('Server is running on port ' + port));
-
-//var m_webSocketServer = new WebSocketServer( { server: m_server, autoAcceptConnections: true} );
 
 var groupDrawer = new GroupDrawer();
 
