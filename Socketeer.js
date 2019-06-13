@@ -53,16 +53,15 @@ Socketeer.prototype.AddClient = function(ws)
 
     ws.on('pong', function KeepAlive() { } );
 
-    ws.on('message', function (message, flags)
+    ws.on('message', function (message)
                      {
-                         if(flags.binary)
+                         if(typeof(message) == "string")
                          {
-                            this.m_socketeer.ProcessBinaryMessage.call(this.m_socketeer, this, message);
+                            this.m_socketeer.ProcessASCIIMessage.call(this.m_socketeer, this, message);
                          }
                          else
                          {
-                             ws.send(typeof(message));
-                            this.m_socketeer.ProcessASCIIMessage.call(this.m_socketeer, this, message);
+                            this.m_socketeer.ProcessBinaryMessage.call(this.m_socketeer, this, message);
                          }     
                      }
          );
