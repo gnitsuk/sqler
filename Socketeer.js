@@ -73,7 +73,7 @@ Socketeer.prototype.AddClient = function(ws)
 
     this.m_clients[this.m_clients.length] = { m_ws: ws };
 
-    ws.send("Server connection accepted BOY. Client ID = " + ws.m_nUniqueID.toString())
+    ws.send("Server connection accepted. Client ID = " + ws.m_nUniqueID.toString())
 
     for (var nCallback = 0; nCallback < this.m_newClientConnectCallbacks.length; nCallback++)
     {
@@ -250,11 +250,6 @@ Socketeer.prototype.IDClient = function (ws, bBinary)
     {
         ws.send(ws.m_nUniqueID.toString(), { binary: false });
     }
-}
-
-Socketeer.prototype.Test = function ()
-{
-    return "jjj";
 }
 
 module.exports = Socketeer;
