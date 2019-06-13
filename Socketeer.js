@@ -30,7 +30,6 @@ Socketeer.prototype.StartServer = function()
     this.m_webSocketServer.on('connection', function (ws)
                                             {
                                                 this.m_socketeer.AddClient.call(this.m_socketeer, ws);
-                                                //ws.send("Server connection accepted. Client ID = TZZZ");
                                             }
                              );
 }
@@ -58,13 +57,11 @@ Socketeer.prototype.AddClient = function(ws)
                      {
                          if(flags.binary)
                          {
-                            //this.m_socketeer.ProcessBinaryMessage.call(this.m_socketeer, this, message);
-                             ws.send("WOW1");
+                            this.m_socketeer.ProcessBinaryMessage.call(this.m_socketeer, this, message);
                          }
                          else
                          {
-                            //this.m_socketeer.ProcessASCIIMessage.call(this.m_socketeer, this, message);
-                             ws.send("WOW2");
+                            this.m_socketeer.ProcessASCIIMessage.call(this.m_socketeer, this, message);
                          }     
                      }
          );
