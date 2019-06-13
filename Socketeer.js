@@ -61,6 +61,7 @@ Socketeer.prototype.AddClient = function(ws)
                          }
                          else
                          {
+                             ws.send("HELLO");
                             this.m_socketeer.ProcessASCIIMessage.call(this.m_socketeer, this, message);
                          }     
                      }
