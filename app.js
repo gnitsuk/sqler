@@ -7,7 +7,7 @@ var GroupDrawer = require('./GroupDrawer');
 
 const app = express();
 var port = process.env.PORT || 3000;
-app.get('/', (req, res) => res.send('Group Drawer HTML Server Running.'));
+app.get('/', (req, res) => res.send('Group Drawer HTML Server Active.'));
 var m_server = app.listen(port, () => console.log('Server is running on port ' + port));
 
 var groupDrawer = new GroupDrawer();
