@@ -15,7 +15,7 @@ function Socketeer(server, nKeepAliveCheckInterval)
     this.m_additionalHelpStringsCallbacks = new Array();
     this.m_arrASCIIMessages = ["EnumerateClients", "Help", "ID", "Identify"];
     this.m_nKeepAliveCheckInterval = Math.max(100, nKeepAliveCheckInterval);
-    this.m_arrASCIIMessageDescriptions = [ "Returns the number of gavins connected to the server.",
+    this.m_arrASCIIMessageDescriptions = [ "Returns the number of clients connected to the server.",
                                            "Supplies a list of ASCII commands and their decriptions.",
                                            "Returns the calling client's position in the server's list of clients.",
                                            "Returns the calling client's unique ID on the server." ];
