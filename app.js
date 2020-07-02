@@ -3,21 +3,21 @@ var path = require('path');
 var request = require('request');
 const express = require('express');
 var Socketeer = require('./Socketeer');
-var GroupDrawer = require('./Chatterer');
+var Chatterer = require('./Chatterer');
 
 const app = express();
 var port = process.env.PORT || 3000;
-app.get('/', (req, res) => res.send('Group Drawer HTML Server Active.'));
+app.get('/', (req, res) => res.send('Chatterer HTML Server Active.'));
 var m_server = app.listen(port, () => console.log('Server is running on port ' + port));
 
-var groupDrawer = new GroupDrawer();
+var chatterer = new Chatterer();
 
 var socketeer = new Socketeer(m_server, 20000);
 
-socketeer.AddASCIIMessageCallback(groupDrawer.HandleASCIIMessage, groupDrawer);
-socketeer.AddBinaryMessageCallback(groupDrawer.HandleBinaryMessage, groupDrawer);
-socketeer.AddAdditionalHelpStringsCallback(groupDrawer.GetHelpStrings, groupDrawer);
-socketeer.AddNewClientConnectCallback(groupDrawer.HandleNewClientConnect, groupDrawer);
-socketeer.AddClientDisconnectCallback(groupDrawer.HandleClientDisconnect, groupDrawer);
+socketeer.AddASCIIMessageCallback(chatterer.HandleASCIIMessage, chatterer);
+socketeer.AddBinaryMessageCallback(chatterer.HandleBinaryMessage, chatterer);
+socketeer.AddAdditionalHelpStringsCallback(chatterer.GetHelpStrings, chatterer);
+socketeer.AddNewClientConnectCallback(chatterer.HandleNewClientConnect, chatterer);
+socketeer.AddClientDisconnectCallback(chatterer.HandleClientDisconnect, chatterer);
 
 socketeer.StartServer();
