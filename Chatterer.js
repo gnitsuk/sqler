@@ -28,7 +28,7 @@ GroupDrawer.prototype.HandleASCIIMessage = function (szMessage, ws, clients)
     }
     else if(szLowerCaseMessage.indexOf("name = ") >= 0)
     {
-        var szName = szLowerCaseMessage.substring(7, szLowerCaseMessage.length);
+        var szName = szMessage.substring(7, szMessage.length);
 
         this.m_clients[ws.m_nUniqueID].m_szName = szName;
 
