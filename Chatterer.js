@@ -175,12 +175,7 @@ GroupDrawer.prototype.HandleBinaryMessage = function (message, ws, clients)
 
     //var code = message.readUInt32LE(0);
 
-    var buffer = Buffer.alloc(4);
-    var dataview = new DataView(buffer);
-
-    dataview.setInt32(0, 3, true); // 1 = Return Client Names
-
-    ws.send(buffer, { binary: true });
+    ws.send(message, { binary: true });
 
     //this.MaintainClientProperties(code, ws.m_nUniqueID, buf);
 
