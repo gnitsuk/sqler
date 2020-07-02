@@ -173,9 +173,14 @@ GroupDrawer.prototype.HandleBinaryMessage = function (message, ws, clients)
 {
     //var buf = this.PrependUniqueIDToMessage(message, ws);
 
-    var code = message.readUInt32LE(0);
+    //var code = message.readUInt32LE(0);
 
-    ws.send(message, { binary: true });
+    var buffer = new ArrayBuffer(4);
+    var dataview = new DataView(buffer);
+
+    dataview.setInt32(0, 3, true); // 1 = Return Client Names
+
+    ws.send(buffer, { binary: true });
 
     //this.MaintainClientProperties(code, ws.m_nUniqueID, buf);
 
