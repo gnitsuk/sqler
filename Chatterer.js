@@ -171,13 +171,15 @@ GroupDrawer.prototype.MaintainClientProperties = function (code, nUniqueID, mess
 
 GroupDrawer.prototype.HandleBinaryMessage = function (message, ws, clients)
 {
-    var buf = this.PrependUniqueIDToMessage(message, ws);
+    //var buf = this.PrependUniqueIDToMessage(message, ws);
 
     var code = message.readUInt32LE(0);
 
-    this.MaintainClientProperties(code, ws.m_nUniqueID, buf);
+    ws.send(message, { binary: true });
 
-    for (nClient = 0; nClient < clients.length; nClient++)
+    //this.MaintainClientProperties(code, ws.m_nUniqueID, buf);
+
+    /*for (nClient = 0; nClient < clients.length; nClient++)
     {
         if (clients[nClient].m_ws.m_nUniqueID != ws.m_nUniqueID)
         {
@@ -196,7 +198,7 @@ GroupDrawer.prototype.HandleBinaryMessage = function (message, ws, clients)
                 this.HandleDrawStyleMessage(code, this.m_clients[ws.m_nUniqueID].m_contactedClients[clients[nClient].m_ws.m_nUniqueID], bHaveNotContactedClientBefore);
             }
         }
-    }
+    }*/
 }
 
 module.exports = GroupDrawer;
