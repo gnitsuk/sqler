@@ -1,3 +1,4 @@
+var OP_CODES = { "NUM_OTHER_CLIENTS": 1 };
 var GROUP_DRAWER_ASCII_MESSAGE = { "ACTIVE_CLIENTS": 0 };
 var DRAWING_CODES = { "DRAW_SEGMENT": 0, "END_DRAW_SEGMENT": 1, "DRAWING_COLOUR": 2, "DRAWING_WIDTH": 3, "DRAWING_STYLE": 4 };
 
@@ -174,7 +175,7 @@ GroupDrawer.prototype.HandleBinaryMessage = function (message, ws, clients)
     var buffer = new ArrayBuffer(8);
     var dataview = new DataView(buffer);
 
-    dataview.setInt32(0, 1, true); // 1 = Return Client Names
+    dataview.setInt32(0, OP_CODES.NUM_OTHER_CLIENTS, true); // 1 = Return Client Names
     dataview.setInt32(4, clients.length - 1, true);
 
     ws.send(buffer, { binary: true });
