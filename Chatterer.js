@@ -28,7 +28,11 @@ GroupDrawer.prototype.HandleASCIIMessage = function (szMessage, ws, clients)
     }
     else if(szLowerCaseMessage.indexOf("name = ") >= 0)
     {
-        ws.send("WOW");
+        var szName = szLowerCaseMessage.substring(7, szLowerCaseMessage.length);
+
+        this.m_clients[ws.m_nUniqueID].m_szName = szName;
+
+        ws.send(szName + ", you have been included in the conversation.");
 	}
     else
     {
