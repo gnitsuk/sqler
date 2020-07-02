@@ -175,6 +175,7 @@ GroupDrawer.prototype.HandleBinaryMessage = function (message, ws, clients)
 
     //var code = message.readUInt32LE(0);
 
+
     ws.send(message, { binary: true });
 
     //this.MaintainClientProperties(code, ws.m_nUniqueID, buf);
