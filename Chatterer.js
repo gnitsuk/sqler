@@ -26,7 +26,7 @@ GroupDrawer.prototype.HandleASCIIMessage = function (szMessage, ws, clients)
     {
         ws.send(this.m_numClients.toString());
     }
-    else if(szLowerCaseMessage.indexOf("Name = ") >= 0)
+    else if(szLowerCaseMessage.indexOf("name = ") >= 0)
     {
         ws.send("WOW");
 	}
