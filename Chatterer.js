@@ -175,6 +175,8 @@ GroupDrawer.prototype.HandleBinaryMessage = function (message, ws, clients)
 
     //var code = message.readUInt32LE(0);
 
+    var buffer = new ArrayBuffer(4);
+    var dataview = new DataView(buffer);
 
     ws.send(message, { binary: true });
 
