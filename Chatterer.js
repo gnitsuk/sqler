@@ -32,7 +32,7 @@ GroupDrawer.prototype.HandleASCIIMessage = function (szMessage, ws, clients)
 
         this.m_clients[ws.m_nUniqueID].m_szName = szName;
 
-        ws.send(szName + ", you have been included in the conversation.");
+        ws.send("From Server : " szName + ", you have been included in the conversation.");
 	}
     else
     {
