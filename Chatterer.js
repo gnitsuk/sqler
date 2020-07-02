@@ -175,7 +175,7 @@ GroupDrawer.prototype.HandleBinaryMessage = function (message, ws, clients)
 
     //var code = message.readUInt32LE(0);
 
-    var buffer = new ArrayBuffer(4);
+    var buffer = Buffer.alloc(4);
     var dataview = new DataView(buffer);
 
     dataview.setInt32(0, 3, true); // 1 = Return Client Names
