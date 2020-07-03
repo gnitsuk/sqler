@@ -194,30 +194,9 @@ GroupDrawer.prototype.HandleBinaryMessage = function (message, ws, clients)
         }
     }
 
+    szResponse = szResponse.substring(0, szResponse.length - 1);
+
     ws.send(szResponse);
-
-    //this.MaintainClientProperties(code, ws.m_nUniqueID, buf);
-
-    /*for (nClient = 0; nClient < clients.length; nClient++)
-    {
-        if (clients[nClient].m_ws.m_nUniqueID != ws.m_nUniqueID)
-        {
-            var bHaveNotContactedClientBefore = typeof this.m_clients[ws.m_nUniqueID].m_contactedClients[clients[nClient].m_ws.m_nUniqueID] === 'undefined';
-
-            if (code == DRAWING_CODES.END_DRAW_SEGMENT)
-            {
-                this.HandleEndDrawSegmentMessage(buf, clients[nClient]);
-            }
-            else if (code == DRAWING_CODES.DRAW_SEGMENT)
-            {
-                this.HandleDrawSegmentMessage(buf, clients[nClient], bHaveNotContactedClientBefore, ws.m_nUniqueID);
-            }
-            else
-            {
-                this.HandleDrawStyleMessage(code, this.m_clients[ws.m_nUniqueID].m_contactedClients[clients[nClient].m_ws.m_nUniqueID], bHaveNotContactedClientBefore);
-            }
-        }
-    }*/
 }
 
 module.exports = GroupDrawer;
