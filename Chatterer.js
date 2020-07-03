@@ -193,7 +193,7 @@ GroupDrawer.prototype.HandleBinaryMessage = function (message, ws, clients)
         //}
     //}
 
-    ws.send(this.m_clients[m_ws.m_nUniqueID].toString());
+    ws.send(ws.m_nUniqueID.toString());
 
     //this.MaintainClientProperties(code, ws.m_nUniqueID, buf);
 
