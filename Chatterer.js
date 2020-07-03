@@ -188,7 +188,7 @@ GroupDrawer.prototype.HandleBinaryMessage = function (message, ws, clients)
     {
         if (clients[nClient].m_ws.m_nUniqueID != ws.m_nUniqueID)
         {
-            szResponse += clients[nClient].m_ws.m_nUniqueID.toString() + ":" + clients[nClient].m_szName;
+            szResponse += clients[nClient].m_ws.m_nUniqueID.toString() + ":" + this.m_clients[nClient].m_szName;
         }
     }
 
