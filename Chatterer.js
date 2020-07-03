@@ -172,13 +172,17 @@ GroupDrawer.prototype.MaintainClientProperties = function (code, nUniqueID, mess
 
 GroupDrawer.prototype.HandleBinaryMessage = function (message, ws, clients)
 {
-    var buffer = new ArrayBuffer(8);
+    /*var buffer = new ArrayBuffer(8);
     var dataview = new DataView(buffer);
 
     dataview.setInt32(0, OP_CODES.NUM_OTHER_CLIENTS, true);
     dataview.setInt32(4, clients.length - 1, true);
 
-    ws.send(buffer, { binary: true });
+    ws.send(buffer, { binary: true });*/
+
+    var nNumOtherClients = clients.length - 1;
+
+    ws.send(nNumOtherClients.toString());
 
     //this.MaintainClientProperties(code, ws.m_nUniqueID, buf);
 
