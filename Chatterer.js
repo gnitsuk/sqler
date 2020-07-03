@@ -184,13 +184,14 @@ GroupDrawer.prototype.HandleBinaryMessage = function (message, ws, clients)
 
     var szResponse = nNumOtherClients.toString() + ":";
 
-    /*for (var nClient = 0; nClient < clients.length; nClient++)
+    for (var nClient = 0; nClient < this.m_clients.length; nClient++)
     {
-        if (clients[nClient].m_ws.m_nUniqueID != ws.m_nUniqueID)
+        //if (clients[nClient].m_ws.m_nUniqueID != ws.m_nUniqueID)
         {
-            szResponse += clients[nClient].m_ws.m_nUniqueID.toString() + ":" + this.m_clients[nClient].m_szName;
+            szResponse += "+";
+            //szResponse += clients[nClient].m_ws.m_nUniqueID.toString() + ":" + this.m_clients[nClient].m_szName;
         }
-    }*/
+    }
 
     ws.send(szResponse);
 
