@@ -49,13 +49,25 @@ Chatterer.prototype.HandleASCIIMessage = function (szMessage, ws, clients)
 Chatterer.prototype.HandleNewClientConnect = function (ws)
 {
     this.m_clients[ws.m_nUniqueID] = {};
-    this.m_clients[ws.m_nUniqueID].ws = ws;
+    this.m_clients[ws.m_nUniqueID].m_ws = ws;
 
     this.m_numClients++;
 }
 
 Chatterer.prototype.HandleClientDisconnect = function (ws)
 {
+    for (var nClient = 0; nClient < this.m_clients.length; nClient++)
+    {
+        var nUniqueID = this.m_clients[nClient].m_ws.m_nUniqueID;
+
+        if (nUniqueID != ws.m_nUniqueID)
+        {
+            //szResponse += nUniqueID.toString() + ":" + this.m_clients[nUniqueID].m_szName + ":";
+
+            this.m_clients[nClient].m_ws.send("Client disconnected : " + ws.m_nUniqueID.toString() + ":" + this.m_clients[ws.m_nUniqueID].m_szName);
+        }
+    }
+
     delete this.m_clients[ws.m_nUniqueID];
 
     this.m_clients[ws.m_nUniqueID] = null;
