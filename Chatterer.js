@@ -197,7 +197,7 @@ GroupDrawer.prototype.HandleBinaryMessage = function (message, ws, clients)
             {
                 szResponse += nUniqueID.toString() + ":" + this.m_clients[nUniqueID].m_szName + ":";
 
-                this.m_clients[nUniqueID].ws.send("New client joined");
+                clients[nClient].m_ws.send("New client joined");
             }
         }
 
