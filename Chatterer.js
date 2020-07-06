@@ -64,7 +64,7 @@ Chatterer.prototype.HandleClientDisconnect = function (ws)
         {
             //szResponse += nUniqueID.toString() + ":" + this.m_clients[nUniqueID].m_szName + ":";
 
-            this.m_clients[nClient].m_ws.send("Client disconnected : " + ws.m_nUniqueID.toString() + ":" + this.m_clients[ws.m_nUniqueID].m_szName);
+            this.m_clients[nUniqueID].m_ws.send("Client disconnected : " + ws.m_nUniqueID.toString() + ":" + this.m_clients[ws.m_nUniqueID].m_szName);
         }
     }
 
