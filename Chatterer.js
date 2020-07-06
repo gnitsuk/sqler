@@ -64,7 +64,7 @@ Chatterer.prototype.HandleClientDisconnect = function (ws, clients)
         {
             //szResponse += nUniqueID.toString() + ":" + this.m_clients[nUniqueID].m_szName + ":";
 
-            this.m_clients[nUniqueID].m_ws.send("Client disconnected : " + ws.m_nUniqueID.toString() + ":" + this.m_clients[ws.m_nUniqueID].m_szName);
+            this.m_clients[nUniqueID].m_ws.send("Client disconnected:" + ws.m_nUniqueID.toString() + ":" + this.m_clients[ws.m_nUniqueID].m_szName);
         }
     }
 
@@ -101,7 +101,7 @@ Chatterer.prototype.HandleBinaryMessage = function (message, ws, clients)
             {
                 szResponse += nUniqueID.toString() + ":" + this.m_clients[nUniqueID].m_szName + ":";
 
-                clients[nClient].m_ws.send("New client joined : " + ws.m_nUniqueID.toString() + ":" + this.m_clients[ws.m_nUniqueID].m_szName);
+                clients[nClient].m_ws.send("New client joined:" + ws.m_nUniqueID.toString() + ":" + this.m_clients[ws.m_nUniqueID].m_szName);
             }
         }
 
