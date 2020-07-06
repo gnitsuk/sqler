@@ -1,8 +1,7 @@
 var OP_CODES = { "NUM_OTHER_CLIENTS": 1 };
-var GROUP_DRAWER_ASCII_MESSAGE = { "ACTIVE_CLIENTS": 0 };
-var DRAWING_CODES = { "DRAW_SEGMENT": 0, "END_DRAW_SEGMENT": 1, "DRAWING_COLOUR": 2, "DRAWING_WIDTH": 3, "DRAWING_STYLE": 4 };
+var CHATTERER_ASCII_MESSAGE = { "ACTIVE_CLIENTS": 0 };
 
-function GroupDrawer()
+function Chatterer()
 {
     this.m_clients = {};
     this.m_numClients = 0;
@@ -10,20 +9,20 @@ function GroupDrawer()
     this.m_arrASCIIMessages = ["ActiveClients"];
 
     this.m_arrASCIIMessageDescriptions = [
-                                            "Returns the number of drawers in the group session."
+                                            "Returns the number of clients in the group session."
                                          ];
 }
 
-GroupDrawer.prototype.GetHelpStrings = function ()
+Chatterer.prototype.GetHelpStrings = function ()
 {
     return [this.m_arrASCIIMessages, this.m_arrASCIIMessageDescriptions];
 }
 
-GroupDrawer.prototype.HandleASCIIMessage = function (szMessage, ws, clients)
+Chatterer.prototype.HandleASCIIMessage = function (szMessage, ws, clients)
 {
     var szLowerCaseMessage = szMessage.toLowerCase();
 
-    if (szLowerCaseMessage == this.m_arrASCIIMessages[GROUP_DRAWER_ASCII_MESSAGE.ACTIVE_CLIENTS].toLowerCase())
+    if (szLowerCaseMessage == this.m_arrASCIIMessages[CHATTERER_ASCII_MESSAGE.ACTIVE_CLIENTS].toLowerCase())
     {
         ws.send(this.m_numClients.toString());
     }
@@ -47,34 +46,16 @@ GroupDrawer.prototype.HandleASCIIMessage = function (szMessage, ws, clients)
     }
 }
 
-GroupDrawer.prototype.HandleNewClientConnect = function (ws)
+Chatterer.prototype.HandleNewClientConnect = function (ws)
 {
     this.m_clients[ws.m_nUniqueID] = {};
     this.m_clients[ws.m_nUniqueID].ws = ws;
-    this.m_clients[ws.m_nUniqueID].m_contactedClients = [];
 
     this.m_numClients++;
 }
 
-GroupDrawer.prototype.HandleClientDisconnect = function (ws)
+Chatterer.prototype.HandleClientDisconnect = function (ws)
 {
-    delete this.m_clients[ws.m_nUniqueID].m_contactedClients;
-
-    if (typeof this.m_clients[ws.m_nUniqueID].m_colourMessage !== 'undefined')
-    {
-        delete this.m_clients[ws.m_nUniqueID].m_colourMessage;
-    }
-
-    if (typeof this.m_clients[ws.m_nUniqueID].m_widthMessage !== 'undefined')
-    {
-        delete this.m_clients[ws.m_nUniqueID].m_widthMessage;
-    }
-
-    if (typeof this.m_clients[ws.m_nUniqueID].m_styleMessage !== 'undefined')
-    {
-        delete this.m_clients[ws.m_nUniqueID].m_styleMessage;
-    }
-
     delete this.m_clients[ws.m_nUniqueID];
 
     this.m_clients[ws.m_nUniqueID] = null;
@@ -82,96 +63,7 @@ GroupDrawer.prototype.HandleClientDisconnect = function (ws)
     this.m_numClients--;
 }
 
-GroupDrawer.prototype.HandleEndDrawSegmentMessage = function (message, client)
-{
-    client.m_ws.send(message, { binary: true });
-}
-
-GroupDrawer.prototype.HandleDrawStyleMessage = function (drawCode, contactedClient, bHaveNotContactedClientBefore)
-{
-    if (bHaveNotContactedClientBefore)
-    {
-        contactedClient = { m_bInfomredWidth: false, m_bInfomredColour: false, m_bInfomredStyle: false };
-    }
-    else
-    {
-        if (drawCode == DRAWING_CODES.DRAWING_COLOUR)
-        {
-            contactedClient.m_bInfomredColour = false;
-        }
-        else if (drawCode == DRAWING_CODES.DRAWING_WIDTH)
-        {
-            contactedClient.m_bInfomredWidth = false;
-        }
-        else if (drawCode == DRAWING_CODES.DRAWING_STYLE)
-        {
-            contactedClient.m_bInfomredStyle = false;
-        }
-    }
-}
-
-GroupDrawer.prototype.HandleDrawSegmentMessage = function (buf, client, bHaveNotContactedClientBefore, callingClientID)
-{
-    if (bHaveNotContactedClientBefore)
-    {
-        client.m_ws.send(this.m_clients[callingClientID].m_widthMessage, { binary: true });
-        client.m_ws.send(this.m_clients[callingClientID].m_colourMessage, { binary: true });
-        client.m_ws.send(this.m_clients[callingClientID].m_styleMessage, { binary: true });
-
-        this.m_clients[callingClientID].m_contactedClients[client.m_ws.m_nUniqueID] = { m_bInfomredWidth: false, m_bInfomredColour: false, m_bInfomredStyle: false};
-    }
-    else
-    {
-        if (this.m_clients[callingClientID].m_contactedClients[client.m_ws.m_nUniqueID].m_bInfomredColour == false)
-        {
-            client.m_ws.send(this.m_clients[callingClientID].m_colourMessage, { binary: true });
-            this.m_clients[callingClientID].m_contactedClients[client.m_ws.m_nUniqueID].m_bInfomredColour = true;
-        }
-
-        if (this.m_clients[callingClientID].m_contactedClients[client.m_ws.m_nUniqueID].m_bInfomredWidth == false)
-        {
-            client.m_ws.send(this.m_clients[callingClientID].m_widthMessage, { binary: true });
-            this.m_clients[callingClientID].m_contactedClients[client.m_ws.m_nUniqueID].m_bInfomredWidth = true;
-        }
-
-        if (this.m_clients[callingClientID].m_contactedClients[client.m_ws.m_nUniqueID].m_bInfomredStyle == false)
-        {
-            client.m_ws.send(this.m_clients[callingClientID].m_styleMessage, { binary: true });
-            this.m_clients[callingClientID].m_contactedClients[client.m_ws.m_nUniqueID].m_bInfomredStyle = true;
-        }
-    }
-
-    client.m_ws.send(buf, { binary: true });
-}
-
-GroupDrawer.prototype.PrependUniqueIDToMessage = function (message, ws)
-{
-    var prependedMessage = Buffer.alloc(message.length + 4);
-
-    prependedMessage.writeUInt32LE(ws.m_nUniqueID, 0);
-
-    message.copy(prependedMessage, 4, 0, message.length);
-
-    return prependedMessage;
-}
-
-GroupDrawer.prototype.MaintainClientProperties = function (code, nUniqueID, message)
-{
-    if (code == DRAWING_CODES.DRAWING_COLOUR)
-    {
-        this.m_clients[nUniqueID].m_colourMessage = message;
-    }
-    else if (code == DRAWING_CODES.DRAWING_WIDTH)
-    {
-        this.m_clients[nUniqueID].m_widthMessage = message;
-    }
-    else if (code == DRAWING_CODES.DRAWING_STYLE)
-    {
-        this.m_clients[nUniqueID].m_styleMessage = message;
-    }
-}
-
-GroupDrawer.prototype.HandleBinaryMessage = function (message, ws, clients)
+Chatterer.prototype.HandleBinaryMessage = function (message, ws, clients)
 {
     /*var buffer = new ArrayBuffer(8);
     var dataview = new DataView(buffer);
@@ -207,4 +99,4 @@ GroupDrawer.prototype.HandleBinaryMessage = function (message, ws, clients)
     }
 }
 
-module.exports = GroupDrawer;
+module.exports = Chatterer;
