@@ -46,7 +46,7 @@ Chatterer.prototype.HandleASCIIMessage = function (szMessage, ws, clients)
     }
 }
 
-Chatterer.prototype.HandleNewClientConnect = function (ws)
+Chatterer.prototype.HandleNewClientConnect = function (ws, clients)
 {
     this.m_clients[ws.m_nUniqueID] = {};
     this.m_clients[ws.m_nUniqueID].m_ws = ws;

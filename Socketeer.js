@@ -29,7 +29,7 @@ Socketeer.prototype.StartServer = function()
 
     this.m_webSocketServer.on('connection', function (ws)
                                             {
-                                                this.m_socketeer.AddClient.call(this.m_socketeer, ws);
+                                                this.m_socketeer.AddClient.call(this.m_socketeer, ws, this.m_clients);
                                             }
                              );
 }
