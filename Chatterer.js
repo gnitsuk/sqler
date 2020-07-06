@@ -50,6 +50,7 @@ GroupDrawer.prototype.HandleASCIIMessage = function (szMessage, ws, clients)
 GroupDrawer.prototype.HandleNewClientConnect = function (ws)
 {
     this.m_clients[ws.m_nUniqueID] = {};
+    this.m_clients[ws.m_nUniqueID].ws = ws;
     this.m_clients[ws.m_nUniqueID].m_contactedClients = [];
 
     this.m_numClients++;
@@ -180,23 +181,28 @@ GroupDrawer.prototype.HandleBinaryMessage = function (message, ws, clients)
 
     ws.send(buffer, { binary: true });*/
 
-    var nNumOtherClients = clients.length - 1;
+    var code = message.readUInt32LE(0);
 
-    var szResponse = nNumOtherClients.toString() + ":";
-
-    for (var nClient = 0; nClient < clients.length; nClient++)
+    if (code == OP_CODES.NUM_OTHER_CLIENTS)
     {
-        var nUniqueID = clients[nClient].m_ws.m_nUniqueID;
+        var nNumOtherClients = clients.length - 1;
 
-        if (nUniqueID != ws.m_nUniqueID)
+        var szResponse = nNumOtherClients.toString() + ":";
+
+        for (var nClient = 0; nClient < clients.length; nClient++)
         {
-            szResponse += nUniqueID.toString() + ":" + this.m_clients[nUniqueID].m_szName + ":";
+            var nUniqueID = clients[nClient].m_ws.m_nUniqueID;
+
+            if (nUniqueID != ws.m_nUniqueID)
+            {
+                szResponse += nUniqueID.toString() + ":" + this.m_clients[nUniqueID].m_szName + ":";
+            }
         }
+
+        szResponse = szResponse.substring(0, szResponse.length - 1);
+
+        ws.send(szResponse);
     }
-
-    szResponse = szResponse.substring(0, szResponse.length - 1);
-
-    ws.send(szResponse);
 }
 
 module.exports = GroupDrawer;
