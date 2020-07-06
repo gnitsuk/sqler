@@ -54,17 +54,18 @@ Chatterer.prototype.HandleNewClientConnect = function (ws)
     this.m_numClients++;
 }
 
-Chatterer.prototype.HandleClientDisconnect = function (ws)
+Chatterer.prototype.HandleClientDisconnect = function (ws, clients)
 {
-    for (var nClient = 0; nClient < this.m_clients.length; nClient++)
+    for (var nClient = 0; nClient < clients.length; nClient++)
     {
-        var nUniqueID = this.m_clients[nClient].m_ws.m_nUniqueID;
+        var nUniqueID = clients[nClient].m_ws.m_nUniqueID;
 
         if (nUniqueID != ws.m_nUniqueID)
         {
             //szResponse += nUniqueID.toString() + ":" + this.m_clients[nUniqueID].m_szName + ":";
 
-            this.m_clients[nUniqueID].m_ws.send("Client disconnected : " + ws.m_nUniqueID.toString() + ":" + this.m_clients[ws.m_nUniqueID].m_szName);
+            //this.m_clients[nUniqueID].m_ws.send("Client disconnected : " + ws.m_nUniqueID.toString() + ":" + this.m_clients[ws.m_nUniqueID].m_szName);
+            this.m_clients[nUniqueID].m_ws.send("C");
         }
     }
 

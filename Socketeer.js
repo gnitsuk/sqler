@@ -123,7 +123,7 @@ Socketeer.prototype.ProcessClientCloseMessage = function (ws)
 {
     for (var nCallback = 0; nCallback < this.m_clientDisconnectCallbacks.length; nCallback++)
     {
-        this.m_clientDisconnectCallbacks[nCallback].m_ClientDisconnectCallback.call(this.m_clientDisconnectCallbacks[nCallback].m_context, ws);
+        this.m_clientDisconnectCallbacks[nCallback].m_ClientDisconnectCallback.call(this.m_clientDisconnectCallbacks[nCallback].m_context, ws, this.m_clients);
     }
 
     this.Terminate(ws);
