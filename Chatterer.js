@@ -26,15 +26,25 @@ Chatterer.prototype.HandleASCIIMessage = function (szMessage, ws, clients)
     {
         ws.send(this.m_numClients.toString());
     }
-    else if(szLowerCaseMessage.indexOf("name = ") >= 0)
+    else if (szLowerCaseMessage.indexOf("name = ") >= 0)
     {
         var szName = szMessage.substring(7, szMessage.length);
 
         this.m_clients[ws.m_nUniqueID].m_szName = szName;
 
         ws.send("From Server : " + szName + ", you have been included in the conversation.");
-	}
-    else
+    }
+    else if (szLowerCaseMessage.indexOf("message = ") >= 0)
+    {
+        var message = szMessage.substring(10, szMessage.length);
+
+        var arrMessage = message.split(":");
+
+        var nUniqueID = parseInt(arrMesssage[0]);
+
+        this.m_clients[nUniqueID].m_ws.send("zz");
+    }
+    /*else
     {
         for (nClient = 0; nClient < clients.length; nClient++)
         {
@@ -43,7 +53,7 @@ Chatterer.prototype.HandleASCIIMessage = function (szMessage, ws, clients)
                 //clients[nClient].m_ws.send(this.m_text, { binary: false });
             }
         }
-    }
+    }*/
 }
 
 Chatterer.prototype.HandleNewClientConnect = function (ws, clients)
