@@ -33,7 +33,7 @@ Chatterer.prototype.HandleASCIIMessage = function (szMessage, ws, clients)
         ws.m_szName = szName;
         this.m_clients[ws.m_nUniqueID].m_szName = szName;
 
-        ws.send("From Server : " + szName + ", you have been included in the conversation.");
+        ws.send("From Cloud : " + szName + ", you have been included in the conversation.");
     }
     else if (szLowerCaseMessage.indexOf("message = ") >= 0)
     {
