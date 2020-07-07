@@ -30,6 +30,7 @@ Chatterer.prototype.HandleASCIIMessage = function (szMessage, ws, clients)
     {
         var szName = szMessage.substring(7, szMessage.length);
 
+        ws.m_szName = szName;
         this.m_clients[ws.m_nUniqueID].m_szName = szName;
 
         ws.send("From Server : " + szName + ", you have been included in the conversation.");
@@ -42,7 +43,7 @@ Chatterer.prototype.HandleASCIIMessage = function (szMessage, ws, clients)
 
         var nUniqueID = parseInt(arrMessage[0]);
 
-        this.m_clients[nUniqueID].m_ws.send("zz");
+        this.m_clients[nUniqueID].m_ws.send("From " + ws.m_szName + " : " + arrMessage[1]);
     }
     /*else
     {
