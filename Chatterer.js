@@ -40,7 +40,7 @@ Chatterer.prototype.HandleASCIIMessage = function (szMessage, ws, clients)
 
         var arrMessage = message.split(":");
 
-        var nUniqueID = parseInt(szMessage[0]);
+        var nUniqueID = parseInt(arrMessage[0]);
 
         this.m_clients[nUniqueID].m_ws.send("zz");
     }
