@@ -1,3 +1,5 @@
+var SQL = require('./sql');
+
 var OP_CODES = { "NUM_OTHER_CLIENTS": 1 };
 var CHATTERER_ASCII_MESSAGE = { "ACTIVE_CLIENTS": 0 };
 
