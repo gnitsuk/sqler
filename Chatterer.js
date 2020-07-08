@@ -20,7 +20,22 @@ Chatterer.prototype.GetHelpStrings = function ()
 
 Chatterer.prototype.SQLTest = function()
 {
-    return "Green";
+    const config = {
+        authentication: {
+            options: {
+                userName: "gnits", // update me
+                password: "ott456SENT" // update me
+            },
+            type: "default"
+        },
+        server: "gnits.database.windows.net", // update me
+        options: {
+            database: "gnits", //update me
+            encrypt: true
+        }
+    };
+
+    return "Orange";
 }
 
 Chatterer.prototype.HandleASCIIMessage = function (szMessage, ws, clients)
