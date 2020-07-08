@@ -1,3 +1,5 @@
+var sql = require('./sql');
+
 var OP_CODES = { "NUM_OTHER_CLIENTS": 1 };
 var CHATTERER_ASCII_MESSAGE = { "ACTIVE_CLIENTS": 0 };
 
@@ -20,7 +22,7 @@ Chatterer.prototype.GetHelpStrings = function ()
 
 Chatterer.prototype.SQLTest = function()
 {
-    return "Yellow";
+    return "Red";
 }
 
 Chatterer.prototype.HandleASCIIMessage = function (szMessage, ws, clients)
