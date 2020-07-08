@@ -12,7 +12,9 @@ function Chatterer()
 
     this.m_arrASCIIMessageDescriptions = [
                                             "Returns the number of clients in the group session."
-                                         ];
+    ];
+
+    this.m_sql = new SQL();
 }
 
 Chatterer.prototype.GetHelpStrings = function ()
@@ -22,7 +24,7 @@ Chatterer.prototype.GetHelpStrings = function ()
 
 Chatterer.prototype.SQLTest = function()
 {
-    return SQL.GetText();
+    return this.m_sql.GetText();
 }
 
 Chatterer.prototype.HandleASCIIMessage = function (szMessage, ws, clients)
