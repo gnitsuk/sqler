@@ -22,7 +22,7 @@ Chatterer.prototype.GetHelpStrings = function ()
 
 Chatterer.prototype.SQLTest = function()
 {
-    return "Word Wide Web 2";
+    return "Dave";
 }
 
 Chatterer.prototype.HandleASCIIMessage = function (szMessage, ws, clients)
