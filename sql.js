@@ -1,6 +1,8 @@
+var mysql = require('mysql');
+
 function sql()
 {
-    this.m_szText = "Azure Server";
+    this.m_szText = "Az Server";
 }
 
 sql.prototype.GetText = function ()
