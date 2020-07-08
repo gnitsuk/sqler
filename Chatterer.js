@@ -1,23 +1,6 @@
 var OP_CODES = { "NUM_OTHER_CLIENTS": 1 };
 var CHATTERER_ASCII_MESSAGE = { "ACTIVE_CLIENTS": 0 };
 
-const { Connection, Request } = require("tedious");
-
-const config = {
-    authentication: {
-        options: {
-            userName: "gnits", // update me
-            password: "ott456SENT" // update me
-        },
-        type: "default"
-    },
-    server: "gnits.database.windows.net", // update me
-    options: {
-        database: "gnits", //update me
-        encrypt: true
-    }
-};
-
 function Chatterer()
 {
     this.m_clients = {};
@@ -37,7 +20,7 @@ Chatterer.prototype.GetHelpStrings = function ()
 
 Chatterer.prototype.SQLTest = function()
 {
-    return "Purple";
+    return "Server";
 }
 
 Chatterer.prototype.HandleASCIIMessage = function (szMessage, ws, clients)
