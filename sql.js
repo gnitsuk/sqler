@@ -1,5 +1,3 @@
-//var mysql = require('mysql');
-
 function sql()
 {
     this.m_szText = "Az Server";
