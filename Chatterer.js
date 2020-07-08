@@ -22,7 +22,7 @@ Chatterer.prototype.GetHelpStrings = function ()
 
 Chatterer.prototype.SQLTest = function()
 {
-    return "Azure";
+    return SQL.GetText();
 }
 
 Chatterer.prototype.HandleASCIIMessage = function (szMessage, ws, clients)
