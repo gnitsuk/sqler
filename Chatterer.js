@@ -20,6 +20,8 @@ Chatterer.prototype.GetHelpStrings = function ()
 
 Chatterer.prototype.SQLTest = function()
 {
+    const { Connection, Request } = require("tedious");
+
     const config = {
         authentication: {
             options: {
@@ -35,7 +37,7 @@ Chatterer.prototype.SQLTest = function()
         }
     };
 
-    return "Orange";
+    return "Grey";
 }
 
 Chatterer.prototype.HandleASCIIMessage = function (szMessage, ws, clients)
