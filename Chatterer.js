@@ -20,7 +20,7 @@ Chatterer.prototype.GetHelpStrings = function ()
 
 Chatterer.prototype.SQLTest = function()
 {
-    return "Server";
+    return "Cloud";
 }
 
 Chatterer.prototype.HandleASCIIMessage = function (szMessage, ws, clients)
