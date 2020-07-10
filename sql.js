@@ -26,12 +26,12 @@ function sql()
     mssql.m_m = this;
     mssql.connect(config, this.MyFunc);
 
-    this.m_szText = "Azure Toddler4";
+    //this.m_szText = "Azure Toddler4";
 }
 
 sql.prototype.MyFunc = function (err)
 {
-    this.m_szText = "pop";
+    this.m_m.m_szText = "pop";
 
     return "KOP";
 }
