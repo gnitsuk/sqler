@@ -28,8 +28,21 @@ function sql(router)
             // make sure that any items are correctly URL encoded in the connection string
             await mssql.connect(config);
             var request = new mssql.Request();
-            const result = await mssql.query(`SELECT * from dbo.Persons`);
-            this.m_szText = "1: " + request.toString();
+            //const result = await mssql.query(`SELECT * from dbo.Persons`);
+
+            const result = await request.query('SELECT * from dbo.Persons', function (err, recordset) {
+
+                if (err) {
+                    this.m_szText = "5";
+                }
+                else {
+                    this.m_szText = "7";
+                }
+
+            });
+
+
+            this.m_szText = "2: " + request.toString();
         } catch (err) {
             this.m_szText = "k";
         }
