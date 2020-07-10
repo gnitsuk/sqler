@@ -23,14 +23,15 @@ function sql()
         }
     };
 
-    var s = mssql.connect(config, this.MyFunc);
+    mssql.m_m = this;
+    this.MyFunc.m_m = this;
 
-    this.m_szText = s.toString();
+    mssql.connect(config, this.MyFunc);
 }
 
 sql.prototype.MyFunc = function (err)
 {
-    this.m_szText = "pop";
+    this.m_m.m_szText = "pop";
 
     return "KOP";
 }
