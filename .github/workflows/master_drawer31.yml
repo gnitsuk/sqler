@@ -3,7 +3,7 @@
 
 name: Build and deploy Node.js app to Azure Web App - SQLER
 
-dependencies:
+require:
         "express": "^4.17.1",
         "mssql": "^6.2.0",
         "request": "^2.88.2"
