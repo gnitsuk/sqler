@@ -4,14 +4,13 @@ var request = require('request');
 const express = require('express');
 var Socketeer = require('./Socketeer');
 var Chatterer = require('./Chatterer');
-const router = express.Router();
 
 const app = express();
 var port = process.env.PORT || 3000;
 app.get('/', (req, res) => res.send('Chatterer HTML Server Active.'));
 var m_server = app.listen(port, () => console.log('Server is running on port ' + port));
 
-var chatterer = new Chatterer(router);
+var chatterer = new Chatterer();
 
 var socketeer = new Socketeer(m_server, 20000);
 

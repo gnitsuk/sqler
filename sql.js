@@ -1,6 +1,6 @@
 const mssql = require('mssql');
 
-function sql(router)
+function sql()
 {
     this.m_szText = "Azure Toddler 77";
 
@@ -30,7 +30,7 @@ function sql(router)
             var request = new mssql.Request();
             const result = await mssql.query(`SELECT * from dbo.Persons`);
 
-            this.m_szText = "IS NOW: " + Object.getOwnPropertyNames(result['recordset']) + "\n" + result['recordset'].length + "\n" + result['recordset'].toTable().columns.length + "\n" + Object.getOwnPropertyNames(result['recordset'][0]) + "\n" + result['recordset'][0].FirstName;
+            this.m_szText = "HAVE NOW: " + Object.getOwnPropertyNames(result['recordset']) + "\n" + result['recordset'].length + "\n" + result['recordset'].toTable().columns.length + "\n" + Object.getOwnPropertyNames(result['recordset'][0]) + "\n" + result['recordset'][0].FirstName;
 
 
 
