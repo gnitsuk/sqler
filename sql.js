@@ -25,26 +25,12 @@ function sql(router)
 
     (async () => {
         try {
-            // make sure that any items are correctly URL encoded in the connection string
+            
             await mssql.connect(config);
             var request = new mssql.Request();
             const result = await mssql.query(`SELECT * from dbo.Persons`);
 
-            /*const result = await request.query('SELECT * from dbo.Persons', function (err, recordset) {
-
-                if (err) {
-                    this.m_szText = "5";
-                }
-                else {
-                    this.m_szText = "7";
-                }
-
-            });*/
-
-
-            //this.m_szText = "222: " + Object.getOwnPropertyNames(result).toString();
-
-            this.m_szText = "IS NOW: " + Object.getOwnPropertyNames(result['recordset']) + "\n" + result['recordset'].length + "\n" + Object.getOwnPropertyNames(result['recordset'].toTable().columns) + "\n" + Object.getOwnPropertyNames(result['recordset'][0]) + "\n" + result['recordset'][0].FirstName;
+            this.m_szText = "IS NOW: " + Object.getOwnPropertyNames(result['recordset']) + "\n" + result['recordset'].length + "\n" + result['recordset'].toTable().columns.length + "\n" + Object.getOwnPropertyNames(result['recordset'][0]) + "\n" + result['recordset'][0].FirstName;
 
 
 
@@ -53,31 +39,6 @@ function sql(router)
         }
     })();
 
-
-
-
-    /*const pool = new mssql.ConnectionPool(config);
-    const poolConnect = pool.connect();
-
-    (async () => {
-        router.get('/', async function (req, res) {
-
-            await poolConnect;
-            try {
-                const request = pool.request();
-                const result = await request.query('SELECT * from dbo.Persons');
-                this.m_szText = "One";
-
-            } catch (err) {
-                this.m_szText = "Two";
-            }
-        });
-    })();*/
-
-
-
-
-    //this.m_szText = "Azure Toddler Battery";
 }
 
 sql.prototype.MyFunc = function (err)
