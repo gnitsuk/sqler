@@ -40,9 +40,6 @@ function sql(router)
                 }
 
             });
-
-
-            this.m_szText = "2: " + request.toString();
         } catch (err) {
             this.m_szText = "k";
         }
