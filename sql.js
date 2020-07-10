@@ -54,18 +54,20 @@ function sql(router)
     const pool = new mssql.ConnectionPool(config);
     const poolConnect = pool.connect();
 
-    router.get('/', async function (req, res) {
+    (async () => {
+        router.get('/', async function (req, res) {
 
-        await poolConnect;
-        try {
-            const request = pool.request();
-            const result = await request.query('SELECT * from dbo.Persons');
-            this.m_szText = "One";
+            await poolConnect;
+            try {
+                const request = pool.request();
+                const result = await request.query('SELECT * from dbo.Persons');
+                this.m_szText = "One";
 
-        } catch (err) {
-            this.m_szText = "Two";
-        }
-    });
+            } catch (err) {
+                this.m_szText = "Two";
+            }
+        });
+    })();
 
     //this.m_szText = "Azure Toddler Battery";
 }
