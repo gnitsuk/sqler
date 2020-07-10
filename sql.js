@@ -44,7 +44,7 @@ function sql(router)
 
             //this.m_szText = "222: " + Object.getOwnPropertyNames(result).toString();
 
-            this.m_szText = Object.getOwnPropertyNames(result['recordset']);
+            this.m_szText = "IS: " + result['recordset'].length;
 
 
 
