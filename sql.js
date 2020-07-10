@@ -1,6 +1,8 @@
+const mssql = require('mssql');
+
 function sql()
 {
-    this.m_szText = "Azure Baby";
+    this.m_szText = "Azure Teen";
 }
 
 sql.prototype.GetText = function ()
