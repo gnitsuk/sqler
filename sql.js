@@ -23,14 +23,16 @@ function sql()
         }
     };
 
-    mssql.connect(config, this.MyFunc);
+    var s = mssql.connect(config, this.MyFunc);
 
-    this.m_szText = "Azure Toddler2";
+    this.m_szText = s.toString();
 }
 
-sql.prototype.MyFunc = function ()
+sql.prototype.MyFunc = function (err)
 {
     this.m_szText = "pop";
+
+    return "KOP";
 }
 
 sql.prototype.GetText = function ()
