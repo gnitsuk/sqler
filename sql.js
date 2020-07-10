@@ -23,28 +23,28 @@ function sql(router)
         }
     };
 
-    const pool = new mssql.ConnectionPool(config);
-    const poolConnect = pool.connect();
+    mssql.connect(config, function (err) {
 
-    /*router.get('/', async function (req, res) {
+        if (err) var q = 1;
 
-        await poolConnect;
-        try {
-            const request = pool.request();
-            const result = await request.query('SELECT * from dbo.Persons');
+        // create Request object
+        var request = new mssql.Request();
 
-        } catch (err) {
-            var t = 8;
-        }
-    });*/
+        // query to the database and get the records
+        request.query('SELECT * from dbo.Persons', function (err, recordset) {
 
-    //const request = pool.request(); 
+            if (err) {
+                var v = 1;
+            }
+            else {
+                // send records as a response
+                var w = 1;
+            }
 
-    //await poolConnect;
+        });
+    });
 
-    //mssql.connect(config, this.MyFunc);
-
-    this.m_szText = "Azure Toddler Joker";
+    this.m_szText = "Azure Toddler Bat";
 }
 
 sql.prototype.MyFunc = function (err)
