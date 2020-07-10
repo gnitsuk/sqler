@@ -2,7 +2,7 @@ const mssql = require('mssql');
 
 function sql(router)
 {
-    this.m_szText = "Azure Toddler 9955549";
+    this.m_szText = "Azure Toddler 77";
 
     const config = {
 
@@ -51,6 +51,9 @@ function sql(router)
         }
     })();*/
 
+
+
+
     const pool = new mssql.ConnectionPool(config);
     const poolConnect = pool.connect();
 
@@ -68,6 +71,9 @@ function sql(router)
             }
         });
     })();
+
+
+
 
     //this.m_szText = "Azure Toddler Battery";
 }
