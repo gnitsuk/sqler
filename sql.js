@@ -25,7 +25,7 @@ function sql(router)
 
     mssql.connect(config, function (err) {
 
-        if (err) var q = 1;
+        if (err) this.m_szText = "1";
 
         // create Request object
         var request = new mssql.Request();
@@ -34,17 +34,17 @@ function sql(router)
         request.query('SELECT * from dbo.Persons', function (err, recordset) {
 
             if (err) {
-                var v = 1;
+                this.m_szText = "2";
             }
             else {
                 // send records as a response
-                var w = 1;
+                this.m_szText = "3";
             }
 
         });
     });
 
-    this.m_szText = "Azure Toddler Bat";
+    //this.m_szText = "Azure Toddler Bat";
 }
 
 sql.prototype.MyFunc = function (err)
