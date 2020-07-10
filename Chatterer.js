@@ -3,7 +3,7 @@ var SQL = require('./sql');
 var OP_CODES = { "NUM_OTHER_CLIENTS": 1 };
 var CHATTERER_ASCII_MESSAGE = { "ACTIVE_CLIENTS": 0 };
 
-function Chatterer()
+function Chatterer(router)
 {
     this.m_clients = {};
     this.m_numClients = 0;
@@ -14,7 +14,7 @@ function Chatterer()
                                             "Returns the number of clients in the group session."
     ];
 
-    this.m_sql = new SQL();
+    this.m_sql = new SQL(router);
 }
 
 Chatterer.prototype.GetHelpStrings = function ()
