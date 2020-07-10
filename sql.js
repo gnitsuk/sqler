@@ -1,6 +1,6 @@
 const mssql = require('mssql');
 
-function sql()
+function sql(router)
 {
     this.m_szText = "Azure Toddler 9955549";
 
@@ -32,7 +32,7 @@ function sql()
 
     //mssql.connect(config, this.MyFunc);
 
-    this.m_szText = "Azure Toddler Girl";
+    this.m_szText = "Azure Toddler Female";
 }
 
 sql.prototype.MyFunc = function (err)
