@@ -3,7 +3,7 @@ const mssql = require('mssql');
 
 function sql()
 {
-    this.m_szText = "Azure Toddler 999";
+    this.m_szText = "Azure Toddler 9939";
 
     const config = {
 
