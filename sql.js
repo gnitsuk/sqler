@@ -32,7 +32,7 @@ sql.prototype.MyFunc = function (err)
 {
     this.m_szText = "pop";
 
-    return "KOP"
+    return "KOP";
 }
 
 sql.prototype.GetText = function ()
