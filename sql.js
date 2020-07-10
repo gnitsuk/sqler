@@ -24,6 +24,8 @@ function sql()
     };
 
     mssql.connect(config, this.MyFunc);
+
+    this.m_szText = "Azure Toddler2";
 }
 
 sql.prototype.MyFunc = function ()
