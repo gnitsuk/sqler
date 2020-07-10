@@ -4,6 +4,7 @@ var request = require('request');
 const express = require('express');
 var Socketeer = require('./Socketeer');
 var Chatterer = require('./Chatterer');
+const router = express.Router();
 
 const app = express();
 var port = process.env.PORT || 3000;

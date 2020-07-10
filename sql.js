@@ -26,11 +26,13 @@ function sql()
     const pool = new mssql.ConnectionPool(config);
     const poolConnect = pool.connect();
 
+    //const request = pool.request(); 
+
     //await poolConnect;
 
     //mssql.connect(config, this.MyFunc);
 
-    this.m_szText = "Azure Toddler Boy";
+    this.m_szText = "Azure Toddler Girl";
 }
 
 sql.prototype.MyFunc = function (err)
