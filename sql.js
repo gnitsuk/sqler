@@ -2,7 +2,7 @@ const mssql = require('mssql');
 
 function sql()
 {
-    this.m_szText = "Azure Toddler";
+    this.m_szText = "Azure Toddler7";
 
     const config = {
 
@@ -23,7 +23,7 @@ function sql()
         }
     };
 
-    mssql.m_m = this;
+    //mssql.m_m = this;
     mssql.connect(config, this.MyFunc);
 
     //this.m_szText = "Azure Toddler4";
@@ -31,7 +31,7 @@ function sql()
 
 sql.prototype.MyFunc = function (err)
 {
-    this.m_m.m_szText = "pop";
+    //this.m_m.m_szText = "pop";
 
     return "KOP";
 }
