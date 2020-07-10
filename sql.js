@@ -26,9 +26,9 @@ function sql(router)
     (async () => {
         try {
             // make sure that any items are correctly URL encoded in the connection string
-            //await mssql.connect(config);
-            //const result = await mssql.query`SELECT * from dbo.Persons`;
-            this.m_szText = "222 " + mssql.toString();
+            await mssql.connect(config);
+            const result = await mssql.query(`SELECT * from dbo.Persons`);
+            this.m_szText = "333 ";
         } catch (err) {
             this.m_szText = "k";
         }
