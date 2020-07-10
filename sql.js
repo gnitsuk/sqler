@@ -23,12 +23,12 @@ function sql(router)
         }
     };
 
-    /*(async () => {
+    (async () => {
         try {
             // make sure that any items are correctly URL encoded in the connection string
             await mssql.connect(config);
             var request = new mssql.Request();
-            const result = await mssql.query(`SELECT * from dbo.Persons`);*/
+            const result = await mssql.query(`SELECT * from dbo.Persons`);
 
             /*const result = await request.query('SELECT * from dbo.Persons', function (err, recordset) {
 
@@ -41,20 +41,20 @@ function sql(router)
 
             });*/
 
-/*
-            this.m_szText = "222: " + result.toString();
+
+            this.m_szText = "222: " + Object.getOwnPropertyNames(result).toString();
 
 
 
         } catch (err) {
             this.m_szText = "kkkk";
         }
-    })();*/
+    })();
 
 
 
 
-    const pool = new mssql.ConnectionPool(config);
+    /*const pool = new mssql.ConnectionPool(config);
     const poolConnect = pool.connect();
 
     (async () => {
@@ -70,7 +70,7 @@ function sql(router)
                 this.m_szText = "Two";
             }
         });
-    })();
+    })();*/
 
 
 
