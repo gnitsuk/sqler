@@ -1,9 +1,8 @@
-const express = require("express");
 const mssql = require('mssql');
 
 function sql()
 {
-    this.m_szText = "Azure Teeney";
+    this.m_szText = "Azure Toddler";
 
     const config = {
 
@@ -23,6 +22,13 @@ function sql()
             idleTimeoutMillis: 3000
         }
     };
+
+    mssql.connect(config, this.MyFunc);
+}
+
+sql.prototype.MyFunc = function ()
+{
+    this.m_szText = "pop";
 }
 
 sql.prototype.GetText = function ()
