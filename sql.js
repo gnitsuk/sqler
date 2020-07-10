@@ -66,7 +66,7 @@ function sql(router)
         }
     });
 
-    //this.m_szText = "Azure Toddler Bat";
+    this.m_szText = "Azure Toddler Battery";
 }
 
 sql.prototype.MyFunc = function (err)
