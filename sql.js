@@ -1,9 +1,8 @@
-const router = express.Router();
 const mssql = require('mssql');
 
 function sql()
 {
-    this.m_szText = "Azure Toddler 9939";
+    this.m_szText = "Azure Toddler 9949";
 
     const config = {
 
