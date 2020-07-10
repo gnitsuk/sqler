@@ -23,12 +23,14 @@ function sql()
         }
     };
 
-    await mssql.connect(config);
+    mssql.connect(config);
+
+    await this.MyFunc();
 
     this.m_szText = "Azure Toddler55";
 }
 
-sql.prototype.MyFunc = function (err)
+sql.prototype.MyFunc = async function ()
 {
     return "KOP";
 }
