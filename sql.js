@@ -1,6 +1,6 @@
 function sql()
 {
-    this.m_szText = "Azure Serve";
+    this.m_szText = "Azure Service";
 }
 
 sql.prototype.GetText = function ()
