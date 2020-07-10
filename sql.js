@@ -28,7 +28,7 @@ function sql(router)
             // make sure that any items are correctly URL encoded in the connection string
             //await mssql.connect(config);
             //const result = await mssql.query`SELECT * from dbo.Persons`;
-            this.m_szText = mssql.toString();
+            this.m_szText = "222 " + mssql.toString();
         } catch (err) {
             this.m_szText = "k";
         }
