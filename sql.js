@@ -26,13 +26,25 @@ function sql(router)
     const pool = new mssql.ConnectionPool(config);
     const poolConnect = pool.connect();
 
+    router.get('/', async function (req, res) {
+
+        await poolConnect;
+        try {
+            const request = pool.request();
+            const result = await request.query('SELECT * from dbo.Persons');
+
+        } catch (err) {
+            var t = 8;
+        }
+    });
+
     //const request = pool.request(); 
 
     //await poolConnect;
 
     //mssql.connect(config, this.MyFunc);
 
-    this.m_szText = "Azure Toddler Female";
+    this.m_szText = "Azure Toddler Human";
 }
 
 sql.prototype.MyFunc = function (err)
