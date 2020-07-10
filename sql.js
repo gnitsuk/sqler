@@ -1,3 +1,4 @@
+const router = express.Router();
 const mssql = require('mssql');
 
 function sql()
