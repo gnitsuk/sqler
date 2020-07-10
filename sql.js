@@ -2,7 +2,7 @@ const mssql = require('mssql');
 
 function sql()
 {
-    this.m_szText = "Azure Toddler7";
+    this.m_szText = "Azure Toddler117";
 
     const config = {
 
@@ -23,15 +23,15 @@ function sql()
         }
     };
 
-    mssql.connect(config);
+    mssql.connect(config, this.MyFunc);
 
-    await this.MyFunc();
-
-    this.m_szText = "Azure Toddler55";
+    //this.m_szText = "Azure Toddler4";
 }
 
-sql.prototype.MyFunc = async function ()
+sql.prototype.MyFunc = function (err)
 {
+    //this.m_m.m_szText = "pop";
+
     return "KOP";
 }
 
