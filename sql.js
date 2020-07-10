@@ -60,13 +60,14 @@ function sql(router)
         try {
             const request = pool.request();
             const result = await request.query('SELECT * from dbo.Persons');
+            this.m_szText = "One";
 
         } catch (err) {
-            var t = 7;
+            this.m_szText = "Two";
         }
     });
 
-    this.m_szText = "Azure Toddler Battery";
+    //this.m_szText = "Azure Toddler Battery";
 }
 
 sql.prototype.MyFunc = function (err)
