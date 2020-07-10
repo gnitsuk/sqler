@@ -23,7 +23,18 @@ function sql(router)
         }
     };
 
-    mssql.connect(config, function (err) {
+    (async () => {
+        try {
+            // make sure that any items are correctly URL encoded in the connection string
+            //await sql.connect(config);
+            //const result = await sql.query`SELECT * from dbo.Persons`;
+            this.m_szText = "n";
+        } catch (err) {
+            this.m_szText = "k";
+        }
+    })();
+
+    /*mssql.connect(config, function (err) {
 
         if (err) this.m_szText = "1";
 
@@ -42,7 +53,7 @@ function sql(router)
             }
 
         });
-    });
+    });*/
 
     //this.m_szText = "Azure Toddler Bat";
 }
