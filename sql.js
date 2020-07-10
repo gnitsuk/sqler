@@ -1,8 +1,9 @@
+const express = require("express");
 const mssql = require('mssql');
 
 function sql()
 {
-    this.m_szText = "Azure Adolescent2";
+    this.m_szText = "Azure Teeney";
 
     const config = {
 
