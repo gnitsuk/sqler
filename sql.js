@@ -23,12 +23,12 @@ function sql(router)
         }
     };
 
-    (async () => {
+    /*(async () => {
         try {
             // make sure that any items are correctly URL encoded in the connection string
             await mssql.connect(config);
             var request = new mssql.Request();
-            const result = await mssql.query(`SELECT * from dbo.Persons`);
+            const result = await mssql.query(`SELECT * from dbo.Persons`);*/
 
             /*const result = await request.query('SELECT * from dbo.Persons', function (err, recordset) {
 
@@ -41,7 +41,7 @@ function sql(router)
 
             });*/
 
-
+/*
             this.m_szText = "222: " + result.toString();
 
 
@@ -49,28 +49,22 @@ function sql(router)
         } catch (err) {
             this.m_szText = "kkkk";
         }
-    })();
+    })();*/
 
-    /*mssql.connect(config, function (err) {
+    const pool = new mssql.ConnectionPool(config);
+    const poolConnect = pool.connect();
 
-        if (err) this.m_szText = "1";
+    router.get('/', async function (req, res) {
 
-        // create Request object
-        var request = new mssql.Request();
+        await poolConnect;
+        try {
+            const request = pool.request();
+            const result = await request.query('SELECT * from dbo.Persons');
 
-        // query to the database and get the records
-        request.query('SELECT * from dbo.Persons', function (err, recordset) {
-
-            if (err) {
-                this.m_szText = "2";
-            }
-            else {
-                // send records as a response
-                this.m_szText = "3";
-            }
-
-        });
-    });*/
+        } catch (err) {
+            var t = 7;
+        }
+    });
 
     //this.m_szText = "Azure Toddler Bat";
 }
