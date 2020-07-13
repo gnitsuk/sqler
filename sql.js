@@ -6,7 +6,7 @@ function sql()
     this.m_szLastDBQueryResult = "";
 }
 
-sql.prototype.GetDBRecords = function ()
+sql.prototype.GetDBRecords = async function ()
 {
     const config = {
 
@@ -28,7 +28,7 @@ sql.prototype.GetDBRecords = function ()
     };
 
     
-    (async () => {
+    //(async () => {
         var err;
         var szResult = "";
         try {
@@ -47,7 +47,7 @@ sql.prototype.GetDBRecords = function ()
             szResult += "Call : " + this.m_call + "\n";
             szResult += "Content of dbo.Persons:\n";
             szResult += "Fields = " + Object.getOwnPropertyNames(result['recordset'][0]) + "\n";
-            szResult += "Number Records = " + nNumRecords + "\n";
+            szResult += "Number # Records = " + nNumRecords + "\n";
 
             for (var nRecord = 0; nRecord < nNumRecords; nRecord++) {
 
@@ -69,7 +69,7 @@ sql.prototype.GetDBRecords = function ()
         {
             this.m_szLastDBQueryResult = "Error Querying Database\n\n\n\n";
         }
-    })();
+    //})();
 
     return this.m_szLastDBQueryResult;
 }
