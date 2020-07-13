@@ -5,7 +5,7 @@ function sql()
     this.m_szLastDBQueryResult = "";
 }
 
-sql.prototype.SetDatabaseContent = function (err)
+sql.prototype.SetDatabaseContent = function ()
 {
     const config = {
 
@@ -27,6 +27,7 @@ sql.prototype.SetDatabaseContent = function (err)
     };
 
     (async () => {
+        var err;
         try {
 
             await mssql.connect(config);
@@ -40,7 +41,7 @@ sql.prototype.SetDatabaseContent = function (err)
             this.m_szLastDBQueryResult = "Server:\n";
             this.m_szLastDBQueryResult += "Content of dbo.Persons:\n";
             this.m_szLastDBQueryResult += "Fields = " + Object.getOwnPropertyNames(result['recordset'][0]) + "\n";
-            this.m_szLastDBQueryResult += "Num. Records = " + nNumRecords + "\n";
+            this.m_szLastDBQueryResult += "Num. # Records = " + nNumRecords + "\n";
 
             for (var nRecord = 0; nRecord < nNumRecords; nRecord++) {
 
@@ -51,7 +52,7 @@ sql.prototype.SetDatabaseContent = function (err)
 
             this.m_szLastDBQueryResult += "\n\n\n\n";
 
-            //+ Object.getOwnPropertyNames(result['recordset']) + "\n" + result['recordset'].length + "\n" + result['recordset'].toTable().columns.length + "\n" + Object.getOwnPropertyNames(result['recordset'][0]) + "\n" + result['recordset'][0].FirstName;
+            //Object.getOwnPropertyNames(result['recordset']) + "\n" + result['recordset'].length + "\n" + result['recordset'].toTable().columns.length + "\n" + Object.getOwnPropertyNames(result['recordset'][0]) + "\n" + result['recordset'][0].FirstName;
 
 
 
