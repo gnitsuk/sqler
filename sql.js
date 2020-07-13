@@ -40,9 +40,9 @@ function sql()
 
             for (var nRecord = 0; nRecord < nNumRecords; nRecord++)
             {
-                var nNumCells = table.rows[nRecord].cells.length;
+                //var nNumCells = table.rows[nRecord].cells.length;
 
-                this.m_szText += nNumCells;
+                this.m_szText += table.rows[0];
 
                 this.m_szText += "\n";
             }
@@ -53,8 +53,10 @@ function sql()
 
 
 
-        } catch (err) {
-            this.m_szText = "Error Querying Database";
+        }
+        catch (err)
+        {
+            this.m_szText = "Error Querying Database\n\n\n\n";
         }
     })();
 
