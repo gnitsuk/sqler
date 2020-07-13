@@ -56,8 +56,8 @@ function sql()
                 if (nRecord < nNumRecords - 1)
                 {
                     this.m_szText += "\n";
-                }*/
-            }
+                }
+            }*/
 
             this.m_szText += "\n\n\n\n";
 
