@@ -72,7 +72,11 @@ sql.prototype.GetDBRecords = function ()
 
     return this.m_szLastDBQueryResult;*/
 
-    return "WOW";
+    var sz = this.m_call.toString();
+
+    this.m_call++;
+
+    return sz;
 }
 
 sql.prototype.ccc = function ()
