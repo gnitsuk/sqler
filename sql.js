@@ -2,12 +2,12 @@ const mssql = require('mssql');
 
 function sql()
 {
-    this.m_szText = "";
+    this.m_szText = this.GetDatabaseContent();
 
-    this.SetDatabaseContent();
+    
 }
 
-sql.prototype.SetDatabaseContent = function (err)
+sql.prototype.GetDatabaseContent = function (err)
 {
     const config = {
 
@@ -42,7 +42,7 @@ sql.prototype.SetDatabaseContent = function (err)
             this.m_szText = "Server:\n";
             this.m_szText += "Content of dbo.Perosns:\n";
             this.m_szText += "Fields = " + Object.getOwnPropertyNames(result['recordset'][0]) + "\n";
-            this.m_szText += "Number Records = " + nNumRecords + "\n";
+            this.m_szText += "Number of Records = " + nNumRecords + "\n";
 
             for (var nRecord = 0; nRecord < nNumRecords; nRecord++) {
                 //var nNumCells = table.rows[nRecord].cells.length;
@@ -63,6 +63,8 @@ sql.prototype.SetDatabaseContent = function (err)
             this.m_szText = "Error Querying Database\n\n\n\n";
         }
     })();
+
+    return this.m_szText;
 }
 
 sql.prototype.GetText = function ()
