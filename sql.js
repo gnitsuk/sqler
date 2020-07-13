@@ -2,6 +2,7 @@ const mssql = require('mssql');
 
 function sql()
 {
+    this.m_call = 1;
     this.m_szLastDBQueryResult = "";
 }
 
@@ -39,6 +40,7 @@ sql.prototype.GetDBRecords = function ()
             var nNumRecords = table.rows.length;
 
             this.m_szLastDBQueryResult = "Server:\n";
+            this.m_szLastDBQueryResult += "Call : " + this.m_call + "\n";
             this.m_szLastDBQueryResult += "Content of dbo.Persons:\n";
             this.m_szLastDBQueryResult += "Fields = " + Object.getOwnPropertyNames(result['recordset'][0]) + "\n";
             this.m_szLastDBQueryResult += "Num. Records = " + nNumRecords + "\n";
@@ -54,7 +56,7 @@ sql.prototype.GetDBRecords = function ()
 
             //Object.getOwnPropertyNames(result['recordset']) + "\n" + result['recordset'].length + "\n" + result['recordset'].toTable().columns.length + "\n" + Object.getOwnPropertyNames(result['recordset'][0]) + "\n" + result['recordset'][0].FirstName;
 
-
+            this.m_call++;
 
         }
         catch (err)
