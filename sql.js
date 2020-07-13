@@ -30,8 +30,8 @@ function sql()
             var request = new mssql.Request();
             const result = await mssql.query(`SELECT * from dbo.Persons`);
 
-            var nNumRecords = result['recordset'].length;
             var table = result['recordset'].toTable();
+            var nNumRecords = table.rows.length;
 
             this.m_szText = "Server:\n";
             this.m_szText += "Content of dbo.Perosns:\n";
@@ -45,7 +45,7 @@ function sql()
 
 
         } catch (err) {
-            this.m_szText = "kkkk";
+            this.m_szText = "Error Querying Database";
         }
     })();
 
