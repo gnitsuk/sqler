@@ -40,7 +40,7 @@ sql.prototype.SetDatabaseContent = function (err)
             this.m_szLastDBQueryResult = "Server:\n";
             this.m_szLastDBQueryResult += "Content of dbo.Persons:\n";
             this.m_szLastDBQueryResult += "Fields = " + Object.getOwnPropertyNames(result['recordset'][0]) + "\n";
-            this.m_szLastDBQueryResult += "Number ovv Records = " + nNumRecords + "\n";
+            this.m_szLastDBQueryResult += "Num. Records = " + nNumRecords + "\n";
 
             for (var nRecord = 0; nRecord < nNumRecords; nRecord++) {
                 //var nNumCells = table.rows[nRecord].cells.length;
