@@ -32,7 +32,7 @@ sql.prototype.GetDBRecords = function ()
         var szResult = "";
         try {
 
-            /*var conn = await mssql.connect(config);
+            var conn = await mssql.connect(config);
             var request = new mssql.Request();
             const result = await mssql.query(`SELECT * from dbo.Persons`);
             await conn.close();
@@ -55,14 +55,14 @@ sql.prototype.GetDBRecords = function ()
                 szResult += "\n";
             }
 
-            szResult += "\n\n\n\n";*/
+            szResult += "\n\n\n\n";
 
             //Object.getOwnPropertyNames(result['recordset']) + "\n" + result['recordset'].length + "\n" + result['recordset'].toTable().columns.length + "\n" + Object.getOwnPropertyNames(result['recordset'][0]) + "\n" + result['recordset'][0].FirstName;
 
             this.m_call++;
 
 
-            this.m_szLastDBQueryResult = "EGG: " + this.m_call;
+            this.m_szLastDBQueryResult = "TOAST: " + this.m_call;
 
         }
         catch (err) {
