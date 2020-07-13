@@ -3,6 +3,11 @@ const mssql = require('mssql');
 function sql()
 {
     this.m_szText = "";
+}
+
+sql.prototype.GetRecordSet = function ()
+{
+    var sRecordSet = "";
 
     const config = {
 
@@ -25,53 +30,41 @@ function sql()
 
     (async () => {
         try {
-            
+
             await mssql.connect(config);
             var request = new mssql.Request();
             const result = await mssql.query(`SELECT * from dbo.Persons`);
 
             var table = result['recordset'].toTable();
+
             var nNumRecords = table.rows.length;
 
-            this.m_szText = "Server:\n";
-            this.m_szText += "Content of dbo.Perosns:\n";
-            this.m_szText += "Fields = " + Object.getOwnPropertyNames(result['recordset'][0]) + "\n";
-            this.m_szText += "Num. Records = " + nNumRecords + "\n";
+            sRecordSet = "Server:\n";
+            sRecordSet += "Content of dbo.Perosns:\n";
+            sRecordSet += "Fields = " + Object.getOwnPropertyNames(result['recordset'][0]) + "\n";
+            sRecordSet += "Num. Records = " + nNumRecords + "\n";
 
-            for (var nRecord = 0; nRecord < nNumRecords; nRecord++)
-            {
+            for (var nRecord = 0; nRecord < nNumRecords; nRecord++) {
                 //var nNumCells = table.rows[nRecord].cells.length;
 
-                this.m_szText += table.rows[nRecord];
+                sRecordSet += table.rows[nRecord];
 
-                this.m_szText += "\n";
+                sRecordSet += "\n";
             }
 
-            this.m_szText += "\n\n\n\n";
+            sRecordSet += "\n\n\n\n";
 
             //+ Object.getOwnPropertyNames(result['recordset']) + "\n" + result['recordset'].length + "\n" + result['recordset'].toTable().columns.length + "\n" + Object.getOwnPropertyNames(result['recordset'][0]) + "\n" + result['recordset'][0].FirstName;
 
 
 
         }
-        catch (err)
-        {
-            this.m_szText = "Error Querying Database\n\n\n\n";
+        catch (err) {
+            sRecordSet = "Error Querying Database\n\n\n\n";
         }
     })();
 
-}
-
-sql.prototype.MyFunc = function (err)
-{
-    //this.m_m.m_szText = "pop";
-
-    return "KOP";
-}
-
-sql.prototype.GetText = function ()
-{
-    return this.m_szText;
+    return sRecordSet;
 }
 
 module.exports = sql;
