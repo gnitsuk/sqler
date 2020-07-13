@@ -72,11 +72,25 @@ sql.prototype.GetDBRecords = function ()
 
     return this.m_szLastDBQueryResult;*/
 
-    var sz = this.m_call.toString();
+
+
+
+
+    /*var sz = this.m_call.toString();
 
     this.m_call++;
 
-    return sz;
+    return sz;*/
+
+
+
+    (async () => {
+        let cnn = await mssql.connect(config);
+        let result = await mssql.query(`SELECT * from dbo.Persons`);
+        await conn.close();
+        this.m_szLastDBQueryResult = this.m_call.toString(); 
+        this.m_call++;
+    })();
 }
 
 sql.prototype.ccc = function ()
