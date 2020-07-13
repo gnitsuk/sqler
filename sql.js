@@ -2,7 +2,9 @@ const mssql = require('mssql');
 
 function sql()
 {
-    this.m_szLastDBQueryResult = this.SetDatabaseContent();
+    this.m_szLastDBQueryResult = "";
+
+    this.SetDatabaseContent();
 }
 
 sql.prototype.SetDatabaseContent = function (err)
@@ -40,7 +42,7 @@ sql.prototype.SetDatabaseContent = function (err)
             this.m_szLastDBQueryResult = "Server:\n";
             this.m_szLastDBQueryResult += "Content of dbo.Persons:\n";
             this.m_szLastDBQueryResult += "Fields = " + Object.getOwnPropertyNames(result['recordset'][0]) + "\n";
-            this.m_szLastDBQueryResult += "Number of Records = " + nNumRecords + "\n";
+            this.m_szLastDBQueryResult += "# Records = " + nNumRecords + "\n";
 
             for (var nRecord = 0; nRecord < nNumRecords; nRecord++) {
                 //var nNumCells = table.rows[nRecord].cells.length;
