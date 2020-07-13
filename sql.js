@@ -2,7 +2,7 @@ const mssql = require('mssql');
 
 function sql()
 {
-    this.m_szText = "Azure Toddler 77";
+    this.m_szText = "";
 
     const config = {
 
@@ -40,7 +40,11 @@ function sql()
 
             for (var nRecord = 0; nRecord < nNumRecords; nRecord++)
             {
-                this.m_szText += nRecord;
+                var nNumCells = table.rows[nRecord].cells.length;
+
+                this.m_szText += nNumCells;
+
+                this.m_szText += "\n";
             }
 
             this.m_szText += "\n\n\n\n";
