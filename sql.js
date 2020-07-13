@@ -28,8 +28,8 @@ sql.prototype.GetDBRecords = function ()
     };
 
     (async () => {
-        //var err;
-        //var szResult = "";
+        var err;
+        var szResult = "";
         try {
 
             /*var conn = await mssql.connect(config);
@@ -62,7 +62,7 @@ sql.prototype.GetDBRecords = function ()
             this.m_call++;
 
 
-            this.m_szLastDBQueryResult = this.m_call;
+            this.m_szLastDBQueryResult = "EGG: " + this.m_call;
 
         }
         catch (err) {
