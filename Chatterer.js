@@ -24,7 +24,7 @@ Chatterer.prototype.GetHelpStrings = function ()
 
 Chatterer.prototype.SQLTest = function()
 {
-    return this.m_sql.GetText();
+    return this.m_sql.GetDBRecords();
 }
 
 Chatterer.prototype.HandleASCIIMessage = function (szMessage, ws, clients)
