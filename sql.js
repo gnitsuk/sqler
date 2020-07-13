@@ -7,6 +7,9 @@ function sql()
 
 sql.prototype.SetDatabaseContent = function (err)
 {
+    var resultStoringObject = {};
+    resultStoringObject.m_target = this;
+
     const config = {
 
         user: "gnits",
@@ -53,14 +56,14 @@ sql.prototype.SetDatabaseContent = function (err)
 
                         //+ Object.getOwnPropertyNames(result['recordset']) + "\n" + result['recordset'].length + "\n" + result['recordset'].toTable().columns.length + "\n" + Object.getOwnPropertyNames(result['recordset'][0]) + "\n" + result['recordset'][0].FirstName;
 
-
+                        this.m_szLastDBQueryResult = "B";
 
                     }
                     catch (err)
                     {
                         this.m_szLastDBQueryResult = "Error Querying Database\n\n\n\n";
                     }
-                })();
+    }).call(resultStoringObject.m_target);
 }
 
 sql.prototype.GetDBRecords = function ()
