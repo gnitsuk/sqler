@@ -38,6 +38,11 @@ function sql()
             this.m_szText += "Fields = " + Object.getOwnPropertyNames(result['recordset'][0]) + "\n";
             this.m_szText += "Num. Records = " + nNumRecords + "\n";
 
+            for (var nRecord = 0; nRecord < nNumRecords; nRecord++)
+            {
+                this.m_szText += nRecord;
+            }
+
             this.m_szText += "\n\n\n\n";
 
             //+ Object.getOwnPropertyNames(result['recordset']) + "\n" + result['recordset'].length + "\n" + result['recordset'].toTable().columns.length + "\n" + Object.getOwnPropertyNames(result['recordset'][0]) + "\n" + result['recordset'][0].FirstName;
