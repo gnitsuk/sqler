@@ -8,8 +8,6 @@ function sql()
 
 sql.prototype.GetDBRecords = function ()
 {
-    this.m_szLastDBQueryResult = "l";
-
     const config = {
 
         user: "gnits",
@@ -31,6 +29,7 @@ sql.prototype.GetDBRecords = function ()
 
     (async () => {
         var err;
+        var szResult = "";
         try {
 
             await mssql.connect(config);
@@ -41,24 +40,26 @@ sql.prototype.GetDBRecords = function ()
 
             var nNumRecords = table.rows.length;
 
-            this.m_szLastDBQueryResult = "Server:\n";
-            this.m_szLastDBQueryResult += "Call : " + this.m_call + "\n";
-            this.m_szLastDBQueryResult += "Content of dbo.Persons:\n";
-            this.m_szLastDBQueryResult += "Fields = " + Object.getOwnPropertyNames(result['recordset'][0]) + "\n";
-            this.m_szLastDBQueryResult += "Num. Records = " + nNumRecords + "\n";
+            szResult = "Server:\n";
+            szResult += "Call : " + this.m_call + "\n";
+            szResult += "Content of dbo.Persons:\n";
+            szResult += "Fields = " + Object.getOwnPropertyNames(result['recordset'][0]) + "\n";
+            szResult += "Number Records = " + nNumRecords + "\n";
 
             for (var nRecord = 0; nRecord < nNumRecords; nRecord++) {
 
-                this.m_szLastDBQueryResult += table.rows[nRecord];
+                szResult += table.rows[nRecord];
 
-                this.m_szLastDBQueryResult += "\n";
+                szResult += "\n";
             }
 
-            this.m_szLastDBQueryResult += "\n\n\n\n";
+            szResult += "\n\n\n\n";
 
             //Object.getOwnPropertyNames(result['recordset']) + "\n" + result['recordset'].length + "\n" + result['recordset'].toTable().columns.length + "\n" + Object.getOwnPropertyNames(result['recordset'][0]) + "\n" + result['recordset'][0].FirstName;
 
             this.m_call++;
+
+            this.m_szLastDBQueryResult = szResult;
 
         }
         catch (err)
