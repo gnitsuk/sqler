@@ -5,7 +5,10 @@ function sql()
     this.m_szLastDBQueryResult = "";
 }
 
-sql.prototype.SetDatabaseContent = function (err) {
+sql.prototype.SetDatabaseContent = function (err)
+{
+    this.m_szLastDBQueryResult = "Blank";
+
     const config = {
 
         user: "gnits",
