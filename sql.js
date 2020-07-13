@@ -31,7 +31,7 @@ function sql()
             const result = await mssql.query(`SELECT * from dbo.Persons`);
 
             var table = result['recordset'].toTable();
-            var nNumRecords = table.rows.length;
+            var nNumRecords = result['recordset'].length;
 
             this.m_szText = "Server:\n";
             this.m_szText += "Content of dbo.Perosns:\n";
@@ -42,7 +42,7 @@ function sql()
             {
                 //var nNumCells = table.rows[nRecord].cells.length;
 
-                this.m_szText += table.rows[nRecord].cells;
+                this.m_szText += result['recordset'][0];
 
                 this.m_szText += "\n";
             }
