@@ -8,6 +8,8 @@ function sql()
 
 sql.prototype.GetDBRecords = function ()
 {
+    this.m_szLastDBQueryResult = "l";
+
     const config = {
 
         user: "gnits",
