@@ -27,7 +27,7 @@ sql.prototype.GetDBRecords = function ()
         }
     };
 
-    /*(async () => {
+    (async () => {
         var err;
         var szResult = "";
         try {
@@ -70,29 +70,7 @@ sql.prototype.GetDBRecords = function ()
         }
     })();
 
-    return this.m_szLastDBQueryResult;*/
-
-
-
-
-
-    /*var sz = this.m_call.toString();
-
-    this.m_call++;
-
-    return sz;*/
-
-
-
-    (async () => {
-        let cnn = await mssql.connect(config);
-        let result = await mssql.query(`SELECT * from dbo.Persons`);
-        await conn.close();
-        this.m_szLastDBQueryResult = this.m_call.toString(); 
-        this.m_call++;
-    })();
-
-    return "this.m_szLastDBQueryResult";
+    return this.m_szLastDBQueryResult;
 }
 
 sql.prototype.ccc = function ()
