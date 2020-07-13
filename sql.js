@@ -62,7 +62,7 @@ sql.prototype.GetDBRecords = function ()
             this.m_call++;
 
 
-            this.m_szLastDBQueryResult = "TOAST: " + this.m_call;
+            this.m_szLastDBQueryResult = "BOAST: " + this.m_call + " :" + szResult;
 
         }
         catch (err) {
