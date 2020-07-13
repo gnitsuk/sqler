@@ -91,6 +91,8 @@ sql.prototype.GetDBRecords = function ()
         this.m_szLastDBQueryResult = this.m_call.toString(); 
         this.m_call++;
     })();
+
+    return this.m_szLastDBQueryResult;
 }
 
 sql.prototype.ccc = function ()
