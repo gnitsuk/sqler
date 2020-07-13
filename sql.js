@@ -61,6 +61,7 @@ sql.prototype.GetDBRecords = function ()
 
             this.m_call++;
 
+
             this.m_szLastDBQueryResult = this.m_call;
 
         }
