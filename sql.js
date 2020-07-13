@@ -7,7 +7,7 @@ function sql()
 
 sql.prototype.GetRecordSet = function ()
 {
-    var sRecordSet = "";
+    this.m_szText = "";
 
     const config = {
 
@@ -39,20 +39,20 @@ sql.prototype.GetRecordSet = function ()
 
             var nNumRecords = table.rows.length;
 
-            sRecordSet = "Server:\n";
-            sRecordSet += "Content of dbo.Perosns:\n";
-            sRecordSet += "Fields = " + Object.getOwnPropertyNames(result['recordset'][0]) + "\n";
-            sRecordSet += "Num. Records = " + nNumRecords + "\n";
+            this.m_szText = "Server:\n";
+            this.m_szText += "Content of dbo.Perosns:\n";
+            this.m_szText += "Fields = " + Object.getOwnPropertyNames(result['recordset'][0]) + "\n";
+            this.m_szText += "Num. Records = " + nNumRecords + "\n";
 
             for (var nRecord = 0; nRecord < nNumRecords; nRecord++) {
                 //var nNumCells = table.rows[nRecord].cells.length;
 
-                sRecordSet += table.rows[nRecord];
+                this.m_szText += table.rows[nRecord];
 
-                sRecordSet += "\n";
+                this.m_szText += "\n";
             }
 
-            sRecordSet += "\n\n\n\n";
+            this.m_szText += "\n\n\n\n";
 
             //+ Object.getOwnPropertyNames(result['recordset']) + "\n" + result['recordset'].length + "\n" + result['recordset'].toTable().columns.length + "\n" + Object.getOwnPropertyNames(result['recordset'][0]) + "\n" + result['recordset'][0].FirstName;
 
@@ -60,11 +60,11 @@ sql.prototype.GetRecordSet = function ()
 
         }
         catch (err) {
-            sRecordSet = "Error Querying Database\n\n\n\n";
+            this.m_szText = "Error Querying Database\n\n\n\n";
         }
     })();
 
-    return sRecordSet;
+    return this.m_szText;
 }
 
 module.exports = sql;
