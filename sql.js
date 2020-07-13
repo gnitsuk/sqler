@@ -4,8 +4,6 @@ function sql()
 {
     this.m_call = 1;
     this.m_szLastDBQueryResult = "";
-
-    this.GetDBRecords();
 }
 
 sql.prototype.GetDBRecords = function ()

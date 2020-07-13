@@ -24,6 +24,8 @@ Chatterer.prototype.GetHelpStrings = function ()
 
 Chatterer.prototype.SQLTest = function()
 {
+    this.m_sql.GetDBRecords();
+
     return this.m_sql.GetDBRecords();
 }
 
