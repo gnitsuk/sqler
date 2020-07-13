@@ -3,12 +3,12 @@ const mssql = require('mssql');
 function sql()
 {
     this.m_szLastDBQueryResult = "";
-
-    this.SetDatabaseContent();
 }
 
 sql.prototype.SetDatabaseContent = function (err)
 {
+    this.m_szLastDBQueryResult = "";
+
     const config = {
 
         user: "gnits",
@@ -42,7 +42,7 @@ sql.prototype.SetDatabaseContent = function (err)
             this.m_szLastDBQueryResult = "Server:\n";
             this.m_szLastDBQueryResult += "Content of dbo.Persons:\n";
             this.m_szLastDBQueryResult += "Fields = " + Object.getOwnPropertyNames(result['recordset'][0]) + "\n";
-            this.m_szLastDBQueryResult += "# Records = " + nNumRecords + "\n";
+            this.m_szLastDBQueryResult += "Num. Records = " + nNumRecords + "\n";
 
             for (var nRecord = 0; nRecord < nNumRecords; nRecord++) {
                 //var nNumCells = table.rows[nRecord].cells.length;
@@ -66,8 +66,10 @@ sql.prototype.SetDatabaseContent = function (err)
     })();
 }
 
-sql.prototype.GetText = function ()
+sql.prototype.GetDBRecords = function ()
 {
+    this.SetDatabaseContent();
+
     return this.m_szLastDBQueryResult;
 }
 
