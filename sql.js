@@ -39,7 +39,7 @@ function sql()
             this.m_szText += "Fields = " + Object.getOwnPropertyNames(result['recordset'][0]) + "\n";
             this.m_szText += "Num. Records = " + nNumRecords + "\n";
 
-            for (var nRecord = 0; nRecord < nNumRecords; nRecord++)
+            /*for (var nRecord = 0; nRecord < nNumRecords; nRecord++)
             {
                 var nNumCells = table.rows[nRecord].cells.length;
 
@@ -56,7 +56,7 @@ function sql()
                 if (nRecord < nNumRecords - 1)
                 {
                     this.m_szText += "\n";
-                }
+                }*/
             }
 
             this.m_szText += "\n\n\n\n";
