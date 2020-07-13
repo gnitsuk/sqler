@@ -27,7 +27,7 @@ sql.prototype.GetDBRecords = function ()
         }
     };
 
-    (async () => {
+    /*(async () => {
         var err;
         var szResult = "";
         try {
@@ -70,7 +70,9 @@ sql.prototype.GetDBRecords = function ()
         }
     })();
 
-    return this.m_szLastDBQueryResult;
+    return this.m_szLastDBQueryResult;*/
+
+    return "WOW";
 }
 
 sql.prototype.ccc = function ()
