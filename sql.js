@@ -42,7 +42,7 @@ function sql()
             {
                 //var nNumCells = table.rows[nRecord].cells.length;
 
-                this.m_szText += table.rows[nRecord];
+                this.m_szText += table.rows[nRecord].cells;
 
                 this.m_szText += "\n";
             }
