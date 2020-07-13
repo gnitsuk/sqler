@@ -2,15 +2,11 @@ const mssql = require('mssql');
 
 function sql()
 {
-    this.m_szText = this.GetDatabaseContent();
-
-    
+    this.m_szLastDBQueryResult = this.SetDatabaseContent();
 }
 
-sql.prototype.GetDatabaseContent = function (err)
+sql.prototype.SetDatabaseContent = function (err)
 {
-    var szResult = "Z";
-
     const config = {
 
         user: "gnits",
@@ -41,37 +37,36 @@ sql.prototype.GetDatabaseContent = function (err)
 
             var nNumRecords = table.rows.length;
 
-            szResult = "Server:\n";
-            szResult += "Content of dbo.Perosns:\n";
-            szResult += "Fields = " + Object.getOwnPropertyNames(result['recordset'][0]) + "\n";
-            szResult += "Number ov Records = " + nNumRecords + "\n";
+            this.m_szLastDBQueryResult = "Server:\n";
+            this.m_szLastDBQueryResult += "Content of dbo.Persons:\n";
+            this.m_szLastDBQueryResult += "Fields = " + Object.getOwnPropertyNames(result['recordset'][0]) + "\n";
+            this.m_szLastDBQueryResult += "Number of Records = " + nNumRecords + "\n";
 
             for (var nRecord = 0; nRecord < nNumRecords; nRecord++) {
                 //var nNumCells = table.rows[nRecord].cells.length;
 
-                szResult += table.rows[nRecord];
+                this.m_szLastDBQueryResult += table.rows[nRecord];
 
-                szResult += "\n";
+                this.m_szLastDBQueryResult += "\n";
             }
 
-            szResult += "\n\n\n\n";
+            this.m_szLastDBQueryResult += "\n\n\n\n";
 
             //+ Object.getOwnPropertyNames(result['recordset']) + "\n" + result['recordset'].length + "\n" + result['recordset'].toTable().columns.length + "\n" + Object.getOwnPropertyNames(result['recordset'][0]) + "\n" + result['recordset'][0].FirstName;
 
 
 
         }
-        catch (err) {
-            szResult = "Error Querying Database\n\n\n\n";
+        catch (err)
+        {
+            this.m_szLastDBQueryResult = "Error Querying Database\n\n\n\n";
         }
     })();
-
-    return szResult;
 }
 
 sql.prototype.GetText = function ()
 {
-    return this.m_szText;
+    return this.m_szLastDBQueryResult;
 }
 
 module.exports = sql;
