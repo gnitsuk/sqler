@@ -7,8 +7,6 @@ function sql()
 
 sql.prototype.SetDatabaseContent = function (err)
 {
-    this.m_szLastDBQueryResult = "Blank";
-
     const config = {
 
         user: "gnits",
@@ -58,11 +56,11 @@ sql.prototype.SetDatabaseContent = function (err)
 
 
         }
-        catch (err) {
+        catch (err)
+        {
             this.m_szLastDBQueryResult = "Error Querying Database\n\n\n\n";
         }
-    }
-    )();
+    })();
 }
 
 sql.prototype.GetDBRecords = function ()
