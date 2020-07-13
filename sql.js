@@ -9,6 +9,8 @@ function sql()
 
 sql.prototype.GetDatabaseContent = function (err)
 {
+    var szResult = "Z";
+
     const config = {
 
         user: "gnits",
@@ -39,20 +41,20 @@ sql.prototype.GetDatabaseContent = function (err)
 
             var nNumRecords = table.rows.length;
 
-            this.m_szText = "Server:\n";
-            this.m_szText += "Content of dbo.Perosns:\n";
-            this.m_szText += "Fields = " + Object.getOwnPropertyNames(result['recordset'][0]) + "\n";
-            this.m_szText += "Number of Records = " + nNumRecords + "\n";
+            szResult = "Server:\n";
+            szResult += "Content of dbo.Perosns:\n";
+            szResult += "Fields = " + Object.getOwnPropertyNames(result['recordset'][0]) + "\n";
+            szResult += "Number ov Records = " + nNumRecords + "\n";
 
             for (var nRecord = 0; nRecord < nNumRecords; nRecord++) {
                 //var nNumCells = table.rows[nRecord].cells.length;
 
-                this.m_szText += table.rows[nRecord];
+                szResult += table.rows[nRecord];
 
-                this.m_szText += "\n";
+                szResult += "\n";
             }
 
-            this.m_szText += "\n\n\n\n";
+            szResult += "\n\n\n\n";
 
             //+ Object.getOwnPropertyNames(result['recordset']) + "\n" + result['recordset'].length + "\n" + result['recordset'].toTable().columns.length + "\n" + Object.getOwnPropertyNames(result['recordset'][0]) + "\n" + result['recordset'][0].FirstName;
 
@@ -60,11 +62,11 @@ sql.prototype.GetDatabaseContent = function (err)
 
         }
         catch (err) {
-            this.m_szText = "Error Querying Database\n\n\n\n";
+            szResult = "Error Querying Database\n\n\n\n";
         }
     })();
 
-    return this.m_szText;
+    return szResult;
 }
 
 sql.prototype.GetText = function ()
