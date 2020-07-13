@@ -30,7 +30,14 @@ function sql()
             var request = new mssql.Request();
             const result = await mssql.query(`SELECT * from dbo.Persons`);
 
-            this.m_szText = "HAVE NOW: " + Object.getOwnPropertyNames(result['recordset']) + "\n" + result['recordset'].length + "\n" + result['recordset'].toTable().columns.length + "\n" + Object.getOwnPropertyNames(result['recordset'][0]) + "\n" + result['recordset'][0].FirstName;
+            var table = result['recordset'].toTable();
+
+            this.m_szText = "Server:\n";
+            this.m_szText += "Content of dbo.Perosns:\n";
+            this.m_szText += "Fields = " + Object.getOwnPropertyNames(result['recordset'][0]);
+            this.m_szText += "# records = " + result['recordset'].length + "\n";
+
+            //+ Object.getOwnPropertyNames(result['recordset']) + "\n" + result['recordset'].length + "\n" + result['recordset'].toTable().columns.length + "\n" + Object.getOwnPropertyNames(result['recordset'][0]) + "\n" + result['recordset'][0].FirstName;
 
 
 
