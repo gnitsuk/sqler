@@ -3,11 +3,6 @@ const mssql = require('mssql');
 function sql()
 {
     this.m_szText = "";
-}
-
-sql.prototype.GetRecordSet = function ()
-{
-    this.m_szText = "";
 
     const config = {
 
@@ -30,7 +25,7 @@ sql.prototype.GetRecordSet = function ()
 
     (async () => {
         try {
-
+            
             await mssql.connect(config);
             var request = new mssql.Request();
             const result = await mssql.query(`SELECT * from dbo.Persons`);
@@ -44,7 +39,8 @@ sql.prototype.GetRecordSet = function ()
             this.m_szText += "Fields = " + Object.getOwnPropertyNames(result['recordset'][0]) + "\n";
             this.m_szText += "Num. Records = " + nNumRecords + "\n";
 
-            for (var nRecord = 0; nRecord < nNumRecords; nRecord++) {
+            for (var nRecord = 0; nRecord < nNumRecords; nRecord++)
+            {
                 //var nNumCells = table.rows[nRecord].cells.length;
 
                 this.m_szText += table.rows[nRecord];
@@ -59,11 +55,23 @@ sql.prototype.GetRecordSet = function ()
 
 
         }
-        catch (err) {
+        catch (err)
+        {
             this.m_szText = "Error Querying Database\n\n\n\n";
         }
     })();
 
+}
+
+sql.prototype.MyFunc = function (err)
+{
+    //this.m_m.m_szText = "pop";
+
+    return "KOP";
+}
+
+sql.prototype.GetText = function ()
+{
     return this.m_szText;
 }
 
