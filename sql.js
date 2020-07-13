@@ -32,9 +32,11 @@ sql.prototype.GetDBRecords = function ()
         var szResult = "";
         try {
 
-            await mssql.connect(config);
+            var conn = await mssql.connect(config);
             var request = new mssql.Request();
             const result = await mssql.query(`SELECT * from dbo.Persons`);
+            await conn.close();
+
 
             var table = result['recordset'].toTable();
 
