@@ -22,11 +22,9 @@ Chatterer.prototype.GetHelpStrings = function ()
     return [this.m_arrASCIIMessages, this.m_arrASCIIMessageDescriptions];
 }
 
-Chatterer.prototype.SQLTest = async function()
+Chatterer.prototype.SQLTest = function()
 {
-    var result = await this.m_sql.ShowResult();
-
-    return result;
+    return this.m_sql.ccc();
 }
 
 Chatterer.prototype.HandleASCIIMessage = function (szMessage, ws, clients)
@@ -46,7 +44,7 @@ Chatterer.prototype.HandleASCIIMessage = function (szMessage, ws, clients)
 
         var sz = this.SQLTest();
 
-        ws.send("Originating From " + sz + " : " + szName + ", you have been included in the conversation.");
+        ws.send("From " + sz + " : " + szName + ", you have been included in the conversation.");
     }
     else if (szLowerCaseMessage.indexOf("message = ") >= 0)
     {
