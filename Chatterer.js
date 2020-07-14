@@ -22,11 +22,6 @@ Chatterer.prototype.GetHelpStrings = function ()
     return [this.m_arrASCIIMessages, this.m_arrASCIIMessageDescriptions];
 }
 
-Chatterer.prototype.SQLTest = function()
-{
-    return this.m_sql.ShowResult();
-}
-
 Chatterer.prototype.HandleASCIIMessage = async function (szMessage, ws, clients)
 {
     var szLowerCaseMessage = szMessage.toLowerCase();
@@ -42,9 +37,9 @@ Chatterer.prototype.HandleASCIIMessage = async function (szMessage, ws, clients)
         ws.m_szName = szName;
         this.m_clients[ws.m_nUniqueID].m_szName = szName;
 
-        var sz = await this.SQLTest();
+        var sz = await this.m_sql.ShowResult();
 
-        ws.send("Is From " + sz + " : " + szName + ", you have been included in the conversation.");
+        ws.send("From " + sz + " : " + szName + ", you have been included in the conversation.");
     }
     else if (szLowerCaseMessage.indexOf("message = ") >= 0)
     {
