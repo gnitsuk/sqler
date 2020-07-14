@@ -9,8 +9,6 @@ function sql()
 sql.prototype.ShowResult = async function ()
 {
     var result = await this.GetAsync();
-
-    alert(result);
 }
 
 sql.prototype.GetAsync = async function ()

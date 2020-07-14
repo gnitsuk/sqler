@@ -44,7 +44,7 @@ Chatterer.prototype.HandleASCIIMessage = function (szMessage, ws, clients)
 
         var sz = this.SQLTest();
 
-        ws.send("From " + sz + " : " + szName + ", you have been included in the conversation.");
+        ws.send("Is From " + sz + " : " + szName + ", you have been included in the conversation.");
     }
     else if (szLowerCaseMessage.indexOf("message = ") >= 0)
     {
