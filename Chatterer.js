@@ -29,7 +29,7 @@ Chatterer.prototype.SQLTest = async function()
     return result;
 }
 
-Chatterer.prototype.HandleASCIIMessage = asyc function (szMessage, ws, clients)
+Chatterer.prototype.HandleASCIIMessage = function (szMessage, ws, clients)
 {
     var szLowerCaseMessage = szMessage.toLowerCase();
 
