@@ -8,25 +8,9 @@ function sql()
 
 sql.prototype.ShowResult = async function ()
 {
-    var result = await this.GetAsync();
-
-    return result;
-}
-
-sql.prototype.GetAsync = async function ()
-{
     var result = await this.GetDBRecords();
 
     return result;
-}
-
-sql.prototype.AsyncFunc = async function ()
-{
-    return new Promise(resolve => {
-        setTimeout(() => {
-            resolve("BANG");
-        }, 2000);
-    });
 }
 
 sql.prototype.GetDBRecords = async function ()
@@ -70,7 +54,7 @@ sql.prototype.GetDBRecords = async function ()
             szResult += "Call : " + this.m_call + "\n";
             szResult += "Content of dbo.Persons:\n";
             szResult += "Fields = " + Object.getOwnPropertyNames(result['recordset'][0]) + "\n";
-            szResult += "Number Records = " + nNumRecords + "\n";
+            szResult += "Num Records = " + nNumRecords + "\n";
 
             for (var nRecord = 0; nRecord < nNumRecords; nRecord++) {
 
