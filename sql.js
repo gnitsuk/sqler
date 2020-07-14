@@ -15,7 +15,7 @@ sql.prototype.ShowResult = async function ()
 
 sql.prototype.GetAsync = async function ()
 {
-    var result = await this.AsyncFunc();
+    var result = await this.GetDBRecords();
 
     return result;
 }
@@ -29,7 +29,7 @@ sql.prototype.AsyncFunc = async function ()
     });
 }
 
-sql.prototype.GetDBRecords = function ()
+sql.prototype.GetDBRecords = async function ()
 {
     const config = {
 
@@ -51,7 +51,7 @@ sql.prototype.GetDBRecords = function ()
     };
 
     
-    (async () => {
+    //(async () => {
         var err;
         var szResult = "";
         try {
@@ -92,7 +92,7 @@ sql.prototype.GetDBRecords = function ()
         {
             this.m_szLastDBQueryResult = "Error Querying Database\n\n\n\n";
         }
-    })();
+    //})();
 
     return this.m_szLastDBQueryResult;
 }
