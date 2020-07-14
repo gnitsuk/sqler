@@ -6,6 +6,29 @@ function sql()
     this.m_szLastDBQueryResult = "";
 }
 
+sql.prototype.ShowResult = async function ()
+{
+    var result = await this.GetAsync();
+
+    alert(result);
+}
+
+sql.prototype.GetAsync = async function ()
+{
+    var result = await this.AsyncFunc();
+
+    return result;
+}
+
+sql.prototype.AsyncFunc = async function ()
+{
+    return new Promise(resolve => {
+        setTimeout(() => {
+            resolve(6);
+        }, 2000);
+    });
+}
+
 sql.prototype.GetDBRecords = function ()
 {
     const config = {
@@ -76,9 +99,11 @@ sql.prototype.GetDBRecords = function ()
 
 sql.prototype.ccc = function ()
 {
-    this.SetDatabaseContent();
+    //this.SetDatabaseContent();
 
-    return this.m_szLastDBQueryResult;
+    //return this.m_szLastDBQueryResult;
+
+    return "ZZZ";
 }
 
 module.exports = sql;
