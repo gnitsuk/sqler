@@ -22,9 +22,11 @@ Chatterer.prototype.GetHelpStrings = function ()
     return [this.m_arrASCIIMessages, this.m_arrASCIIMessageDescriptions];
 }
 
-Chatterer.prototype.SQLTest = function()
+Chatterer.prototype.SQLTest = async function()
 {
-    return this.m_sql.ShowResult();
+    var result = await this.m_sql.ShowResult();
+
+    return result;
 }
 
 Chatterer.prototype.HandleASCIIMessage = function (szMessage, ws, clients)
