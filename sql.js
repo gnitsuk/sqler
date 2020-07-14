@@ -24,7 +24,7 @@ sql.prototype.AsyncFunc = async function ()
 {
     return new Promise(resolve => {
         setTimeout(() => {
-            resolve(6);
+            resolve("BANG");
         }, 2000);
     });
 }
